@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Home</title>
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}">
+        
+        <!-- Stylesheet for Homepage -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+  
+    <body>
+
+        <!-- Loading Screen -->
+        <div id='loadingscreen'>
+            <div class='loading_dots_container'>
+                <div class='loading_dot dot-one'></div>
+                <div class='loading_dot dot-two'></div>
+                <div class='loading_dot dot-three'></div>
+            </div>
+            <div class='loading-text'>Loading</div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='/'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pro-players?update=false'>PRO PLAYERS</a></div>
+        </div>
+
+        <!-- Search Bar and Descriptions -->
+        <div class='search-div'>
+            <div class='description'>Enter Summoner Name to Begin</div>
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div id='region-input-button' class='region-input'>
+                        <p class='region-selection'><span>OCE</span></p>
+                    </div>
+                    <div id='region-options' class='the-regions'>
+                        <div id='oce-option' class='region-option'>OCE</div>
+                        <div id='na-option' class='region-option'>NA</div>
+                        <div id='euw-option' class='region-option'>EUW</div>
+                        <div id='eun-option' class='region-option'>EUN</div>
+                        <div id='kr-option' class='region-option'>KR</div>
+                    </div>
+                    <input class='search-input' id='input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' id='search' type='button' value='>'>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            var selecting = false;
+            var curr_region =  $('.region-selection').text().toLowerCase();
+
+            $("#region-input-button").click(function() {
+
+                if (selecting == false) {
+
+                    selecting = true;
+
+                    $('#region-options').css("display", "flex");
+                    $('#region-options > *').css('display', 'flex');
+                    $('#' +  curr_region + '-option').hide();
+
+                    $('#region-options').animate({width: '210px'});
+
+                } else {
+
+                    selecting = false;
+
+                    $('#region-options').animate({width: '0px'}, function() {
+                        $('#region-options').hide();
+                        $('#region-options > *').hide();
+                    });
+                    
+                }
+
+            });
+
+            $(".region-option").click(function() {
+                
+                selecting = false;
+                selected_region = $(this).text();
+                
+                $('#region-options').animate({width: '0px'}, function() {
+                    $('#region-options').hide;
+                    $('#region-options > *').hide();
+                });
+
+                curr_region =  selected_region.toLowerCase();
+                $('.region-selection span').text(selected_region);
+
+            });
+
+            $("#search").click(function() {
+                input = document.getElementById("input").value;
+                location.href = "profile?username=" + input + '&region=' + curr_region;
+            });
+        </script>
+
+        <!-- Live Stream Area -->
+        <div class='livestream-box'>
+            <div class='livestream-div'>
+                
+                {% for stream in data %}
+                <div class='streamer-container' id='{{loop.cycle('', 'streamer-two')}}'>
+
+                    <div class='stream-wrapper'>
+                        <div class='stream'>
+                            <iframe
+                                src="https://player.twitch.tv/?channel={{stream.login}}&muted=true&autoplay=false"
+                                height="100%" width="100%"
+                                frameborder="0"
+                                scrolling="no"
+                                allowfullscreen="false"
+                                
+                                class='stream-player'>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class='description-wrapper'>
+                        <div class='stream-name'>
+                            <p>{{stream.name}}</p>
+                            {% if stream.official is sameas true %}
+                                <p class='official-stream'>OFFICIAL STREAM</p>
+                            {% endif %}
+                        </div>
+                        <div class='stream-desc'>{{stream.title}}</div>
+                        <div class='stream-views'>Streaming League of Legends for {{stream.view_count}} viewers.</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+              $('#loadingscreen').hide();
+            });
+        </script>          
+
+    </body>
+
+</html>

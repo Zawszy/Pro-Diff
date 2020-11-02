@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Compare</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel="stylesheet" href="../stylesheets/base.css">
+
+        <link rel="stylesheet" href="../stylesheets/compare-stats.css">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='../index.html'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare.html'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pros.html'>PRO PLAYERS</a></div>
+            <div class='menu-button' id='search-button'><a class='nostyle' href='profile.html'></a>SEARCH</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div class='region-input'>
+                        <p class='region-selection'>OCE</p>
+                    </div>
+                    <input class='search-input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' onclick="location.href='profile.html';" type='button' value='>'>
+                </div>
+            </div>
+
+        </div>
+
+        <div class='compare-container'>
+
+            <div class='compare-container-wrapper'>
+
+                <div class='players'>
+
+                    <div class='player-one'>
+
+                        <div class='player-one-info'>
+
+                            <div class='player-icon player-one-icon'>
+                                <img class=player-icon-image src='../images/Planty.png' alt='Plant Icon' title='Plant Icon'>
+                            </div>
+
+                            <div class='player-desc'>
+
+                                <div class='player-name'>
+                                    <p>TestUser</p>
+                                    <p class='player-region'>OCE</p>
+                                </div>
+                                <div class='player-rank'>Rank</div>
+
+                            </div>
+
+                        </div>
+
+                        <div class='outcome-container'>
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text outcome-text-win'>WIN</p>
+                                <p class='match-date'>LENGTH · DATE</p>
+                            </div>
+                            <div class='match-details match-details-win match-details-p1'>
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                               </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='rune-container'>
+                                    <div class='rune-img-container'>
+                                        <img class='rune-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+                                    <div class='rune-img-container'>
+                                        <img class='rune-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Ezreal (17)</span></p>
+                                    <p class='kda'>6/2/3</p>
+                                    <p class='kda-decimal'>4.5:1 KDA</p>
+
+                                </div>
+
+                                <div class='cs-container'>
+
+                                    <p class='cs'>420 CS</p>
+                                    <p class='cs-pm'>69 CS/min</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class='skillorder-container'>
+                            <div class='so-header'>
+                                <p class='header-text'>SKILL ORDER</p>
+                            </div>
+                            <div class='so-details'>
+                                <div class='skill-matrix'>
+                                    <div class='skill-item skill-name'>Q</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>3</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>14</div>
+                                    <div class='skill-item skill-chosen'>15</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>17</div>
+                                    <div class='skill-item skill-chosen'>18</div>
+
+                                    <div class='skill-item skill-name'>W</div>
+                                    <div class='skill-item skill-chosen'>1</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>8</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>10</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>12</div>
+                                    <div class='skill-item skill-chosen'>13</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+
+                                    <div class='skill-item skill-name'>E</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>2</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>4</div>
+                                    <div class='skill-item skill-chosen'>5</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>7</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>9</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+
+                                    <div class='skill-item skill-name'>R</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>6</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>11</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>16</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itembox-container'>
+                            <div class='item-header'>
+                                <p class='header-text'>ITEMS</p>
+                            </div>
+                            <div class='item-details'>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='team-container'>
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM OBJECTIVES</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>0 Baron Kills</p>
+                                    <p class='to-info'>2 Dragon Kills</p>
+                                    <p class='to-info'>4 Towers Destroyed</p>
+                                </div>
+                            </div>
+
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM STATS</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>12 Total Kills</p>
+                                    <p class='to-info'>2123213 Total Gold</p>
+                                    <p class='to-info'>689 Total CS</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class='player-two'>
+
+                        <div class='player-two-info'>
+
+                            <div class='player-icon player-one-icon'>
+                                <img class=player-icon-image src='../images/Planty.png' alt='Plant Icon' title='Plant Icon'>
+                            </div>
+
+                            <div class='player-desc'>
+
+                                <div class='player-name'>
+                                    <p>TestUser</p>
+                                    <p class='player-region'>OCE</p>
+                                </div>
+                                <div class='player-rank'>Rank</div>
+
+                            </div>
+
+                        </div>
+
+                        <div class='outcome-container'>
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text outcome-text-win'>WIN</p>
+                                <p class='match-date'>LENGTH · DATE</p>
+                            </div>
+                            <div class='match-details match-details-win match-details-p1'>
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                               </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='rune-container'>
+                                    <div class='rune-img-container'>
+                                        <img class='rune-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+                                    <div class='rune-img-container'>
+                                        <img class='rune-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Ezreal (17)</span></p>
+                                    <p class='kda'>6/2/3</p>
+                                    <p class='kda-decimal'>4.5:1 KDA</p>
+
+                                </div>
+
+                                <div class='cs-container'>
+
+                                    <p class='cs'>420 CS</p>
+                                    <p class='cs-pm'>69 CS/min</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class='skillorder-container'>
+                            <div class='so-header'>
+                                <p class='header-text'>SKILL ORDER</p>
+                            </div>
+                            <div class='so-details'>
+                                <div class='skill-matrix'>
+                                    <div class='skill-item skill-name'>Q</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>3</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>14</div>
+                                    <div class='skill-item skill-chosen'>15</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>17</div>
+                                    <div class='skill-item skill-chosen'>18</div>
+
+                                    <div class='skill-item skill-name'>W</div>
+                                    <div class='skill-item skill-chosen'>1</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>8</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>10</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>12</div>
+                                    <div class='skill-item skill-chosen'>13</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+
+                                    <div class='skill-item skill-name'>E</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>2</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>4</div>
+                                    <div class='skill-item skill-chosen'>5</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>7</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>9</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+
+                                    <div class='skill-item skill-name'>R</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>6</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>11</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item skill-chosen'>16</div>
+                                    <div class='skill-item'></div>
+                                    <div class='skill-item'></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itembox-container'>
+                            <div class='item-header'>
+                                <p class='header-text'>ITEMS</p>
+                            </div>
+                            <div class='item-details'>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='team-container'>
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM OBJECTIVES</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>0 Baron Kills</p>
+                                    <p class='to-info'>2 Dragon Kills</p>
+                                    <p class='to-info'>4 Towers Destroyed</p>
+                                </div>
+                            </div>
+
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM STATS</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>12 Total Kills</p>
+                                    <p class='to-info'>2123213 Total Gold</p>
+                                    <p class='to-info'>689 Total CS</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,436 @@
+.player-container {
+
+    margin-top: 160px;
+    padding: 0 7.5% 0 7.5%;
+
+    width: 85%;
+    height: auto;
+
+    display: flex;
+    
+}
+
+.player-container-wrapper {
+
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px 10px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+
+}
+
+.player-one {
+    padding: 5px 20px 5px 10px;
+    width: 50%;
+    height: auto;
+    border-right: 1px solid darkgrey;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.player-two {
+    padding: 5px 10px 5px 20px;
+    width: 50%;
+    height: auto;
+    border-left: 1px solid darkgrey;
+    text-align: right;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.player-one-info {
+
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.player-two-info {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.player-icon {
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px black;
+    max-width: 100px;
+    min-width: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.player-icon-image {
+    width: 100%;
+    height: 100%;
+}
+
+.player-one-icon {
+    margin-right: 25px;
+}
+
+.player-two-icon {
+    margin-left: 25px;
+}
+
+.player-desc {
+    color: rgb(36, 36, 36);
+    font-size: 1.3em;
+    font-family: 'Sen', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.player-name {
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.player-region {
+    margin: 0 10px;
+    padding: 4px 8px 4px 8px;
+
+    font-size: 0.8em;
+    font-weight: 700;
+    color: white;
+
+    background-color: #1E9974;
+
+    border-radius: 500px;
+}
+
+.matches-container {
+    width: 100%;
+}
+
+.match {
+    width: 100%;
+    height: 120px;
+    margin-top: 25px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.match-outcome {
+    width: 100%;
+    height: 20%;
+    background-color: lightseagreen;
+
+    display: flex;
+    align-items: center;
+}
+
+.outcome-text {
+    margin-left: 25px;
+    color: white;
+    font-family: 'Sen', sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.match-outcome-win {
+    background-color: #1e6499;
+}
+
+.match-outcome-loss {
+    background-color: #9a2c2c;
+}
+
+.match-details {
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+}
+
+.match-details-win {
+    background-color: #77b2df;
+}
+
+.match-details-loss {
+    background-color: #df8787;
+}
+
+.champion-img-container {
+    border-radius: 50%;
+    width: 12.5%;
+    
+    max-width: 62px;
+    min-width: 56px;
+
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+.champion-img {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+}
+
+.summoner-spells-container {
+    width: 27px;
+    min-width: 24px;
+    margin-left: 6px;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ss-img-container {
+    width: 100%;
+    margin: 3px 0;
+    border-radius: 15%;
+    overflow: hidden;
+    
+    display: flex;
+}
+
+.ss-img {
+    width: 100%;
+    height: 100%;
+}
+
+.kda-container {
+    height: 70%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Sen', sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.champion-name {
+    font-size: 1.2em;
+}
+
+.kda {
+    font-size: 1.5em;
+}
+
+.item {
+    width: 27px;
+}
+
+.item-duo {
+    width: 27px;
+    min-width: 24px;
+    margin-left: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-img-container {
+    /* height: 45%; */
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 3px 0 3px 0;
+
+    overflow: hidden;
+    border-radius: 15%;
+}
+
+.item-img {
+    width: 100%;
+    height: 100%;
+}
+
+.trinket-img-container {
+
+    width: 27px;
+    min-width: 24px;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 15%;
+}
+
+.trinket-img {
+    height: 100%;
+    width: 100%;
+}
+
+.comparison-button {
+
+    width: 5%;
+    height: 100%;
+
+    color: white;
+    font-family: 'Righteous', cursive;
+    font-size: 1.6em;
+
+    border: none;
+
+}
+
+.comparison-win {
+    background-color: #77b2df;
+}
+
+.comparison-loss {
+    background-color: #df8787;
+}
+
+.comparison-win:hover {
+    background-color: #3f81b3;
+}
+
+.comparison-loss:hover {
+    background-color: #b64f4f;
+}
+
+
+.s-wrapper {
+
+    height: 100%;
+    width: 50%;
+
+}
+
+
+#s-button {
+    display: inline;
+}
+
+.s-container {
+
+    margin: 20px;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.s-input {
+
+    box-sizing: border-box;
+
+    vertical-align: middle;  
+
+    font-family: 'Sen', sans-serif;
+    font-size: 1.5em;
+
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px 5px 10px;
+
+}
+
+.s-bar {
+    
+    display: flex;
+    width: 100%;
+    height: 35px;
+ 
+}
+
+.s-button {
+
+    box-sizing: border-box;
+    padding: 0;
+
+    height: 100%;
+    width: 50px;
+
+    color: white;
+    background-color: #1E9974;
+    font-family: 'Righteous', cursive;
+    font-size: 1.6em;
+
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+
+}
+
+.s-button:hover {
+
+    background-color: rgb(22, 111, 84);
+
+}
+
+
+
+.r-input {
+
+    box-sizing: border-box;
+    padding: 5px;
+
+    height: 100%;
+    width: 80px;
+
+    background-color: #1E9974;
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.r-selection {
+
+    height: auto;
+    width: 100%;
+
+    text-align: center;
+
+    font-family: 'Sen', sans-serif;
+    font-size: 1.3em;
+
+    color: white;
+
+}
+
+#invisible-match-id {
+    display: none;
+}
+
+.match-date {
+    
+    margin-right: 25px;
+    margin-left: auto;
+
+    font-family: 'Sen', sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: white;
+}

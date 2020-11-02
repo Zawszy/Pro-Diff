@@ -1,0 +1,158 @@
+.search-div {
+
+    padding-top: 80px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 300px;
+
+    background-color:  #115942;
+
+}
+
+.description {
+
+    color: white;
+    font-family: 'Sen', sans-serif;
+    font-size: 1.6em;
+
+}
+
+.livestream-box {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 1350px;
+
+    margin-bottom: -40px; /* pushes the bot-bar from base.css a bit closer */
+
+}
+
+
+.livestream-div {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 85%;
+    height: 100%;
+
+    border-radius: 30px;
+    overflow: hidden;
+
+    background-color:  #A5E5D5;
+
+}
+
+.streamer-container {
+ 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    width: 100%;
+    height: 450px;
+
+    background-color: #A5E5D5;
+
+}
+
+#streamer-two {
+    background-color: white;
+    flex-direction: row-reverse;
+}
+
+
+#streamer-two-desc {
+    align-items: flex-end;
+    text-align: end;
+}
+
+
+.stream {
+
+    transform: translateY(0px);
+    transform: scale(0.9);
+    border-radius: 20px;
+    height: 315px;
+    width: 560px;
+    overflow: hidden;
+
+}
+
+.stream-wrapper {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+
+}
+
+.description-wrapper {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+
+    padding: 30px;
+
+}
+
+.stream-name {
+
+    color: #115942;
+    font-family: 'Sen', sans-serif;
+    font-size: 3em;
+
+}
+
+.stream-desc{
+
+    color: #115942;
+    font-family: 'Sen', sans-serif;
+    font-size: 1.3em;
+
+}
+
+.stream-team{
+
+    color: #115942;
+    font-family: 'Sen', sans-serif;
+    font-size: 1.5em;
+
+}
+
+.stream-views {
+
+    color: #115942;
+    font-family: 'Sen', sans-serif;
+    font-size: 1em;
+
+}
+
+#search-button {
+    display: none;
+}
+
+.search-container {
+
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}

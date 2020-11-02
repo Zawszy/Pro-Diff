@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - TestUser Stats</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}">
+
+        <!-- Stylesheet for Profile Page -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/profile.css') }}">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Loading Screen -->
+        <div id='loadingscreen'>
+            <div class='loading_dots_container'>
+                <div class='loading_dot dot-one'></div>
+                <div class='loading_dot dot-two'></div>
+                <div class='loading_dot dot-three'></div>
+            </div>
+            <div class='loading-text'>Loading</div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='/'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare?user1=Ziya&user2=Endless'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pro-players?update=false'>PRO PLAYERS</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div id='region-input-button' class='region-input'>
+                        <p class='region-selection'><span>OCE</span></p>
+                    </div>
+                    <div id='region-options' class='the-regions'>
+                        <div id='oce-option' class='region-option'>OCE</div>
+                        <div id='na-option' class='region-option'>NA</div>
+                        <div id='euw-option' class='region-option'>EUW</div>
+                        <div id='eun-option' class='region-option'>EUN</div>
+                        <div id='kr-option' class='region-option'>KR</div>
+                    </div>
+                    <input class='search-input' id='input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' id='search' type='button' value='>'>
+                </div>
+            </div>
+
+            <script>
+
+                var selecting = false;
+                var curr_region =  $('.region-selection').text().toLowerCase();
+    
+                $("#region-input-button").click(function() {
+    
+                    if (selecting == false) {
+    
+                        selecting = true;
+    
+                        $('#region-options').css("display", "flex");
+                        $('#region-options > *').css('display', 'flex');
+                        $('#' +  curr_region + '-option').hide();
+    
+                        $('#region-options').animate({width: '210px'});
+    
+                    } else {
+    
+                        selecting = false;
+    
+                        $('#region-options').animate({width: '0px'}, function() {
+                            $('#region-options').hide();
+                            $('#region-options > *').hide();
+                        });
+                        
+                    }
+    
+                });
+    
+                $(".region-option").click(function() {
+                    
+                    selecting = false;
+                    selected_region = $(this).text();
+                    
+                    $('#region-options').animate({width: '0px'}, function() {
+                        $('#region-options').hide;
+                        $('#region-options > *').hide();
+                    });
+    
+                    curr_region =  selected_region.toLowerCase();
+                    $('.region-selection span').text(selected_region);
+    
+                });
+    
+                $("#search").click(function() {
+                    input = document.getElementById("input").value;
+                    location.href = "profile?username=" + input + '&region=' + curr_region;
+                });
+            </script>
+
+        </div>
+        <div class='profile-container'>
+        {% if data is none %}
+            <div class="no-player-container">            
+                
+                <div class="no-ranked">
+                    <h1>Oops!</h1>
+                    <p>There is no such player with the same name in the given region.</p>
+                </div>
+                
+            </div>
+        {% else %}
+        <!-- Profile Page -->
+        
+            <div class='profile-player-container'>
+
+                <div class='profile-img-container'>
+                    <img class='profile-img' src={{data['p_url']}}>
+                </div>
+
+                <div class='profile-details'>
+                    <div class='profile-player-name'>
+                        <p class='player-name'>{{data['p_name']}}</p>
+                        <p class='player-region'>{{data['p_region']}}</p>
+                    </div>
+    
+                    <div class='profile-player-rank'>
+                        {{data['p_rank']}}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='profile-data-container'>
+
+                <div class='twitter-share'>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out my League of Legends match history on ProDiff!" data-hashtags="ProDiff" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                
+                {% if match is sameas false %}
+                
+                <div class='no-ranked'>
+                    <h1>Oops!</h1>
+                    <p>This player has not played any ranked solo/duo games in the past six months.</p>
+                </div>
+
+                {% else %}
+
+                <div class='filtration-system'>
+                    <div class='filter-button'>FILTER</div>
+                    <div class='filter-menu'>
+                        <div class='filter-champion'>
+                            <p>Champion:</p>
+                            <select id="champion-dropdown" name="champion-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="266">Aatrox</option>
+                                <option value="103">Ahri</option>
+                                <option value="84">Akali</option>
+                                <option value="12">Alistar</option>
+                                <option value="32">Amumu</option>
+                                <option value="34">Anivia</option>
+                                <option value="1">Annie</option>
+                                <option value="523">Aphelios</option>
+                                <option value="22">Ashe</option>
+                                <option value="136">Aurelion Sol</option>
+                                <option value="268">Azir</option>
+                                <option value="432">Bard</option>
+                                <option value="53">Blitzcrank</option>
+                                <option value="63">Brand</option>
+                                <option value="201">Braum</option>
+                                <option value="51">Caitlyn</option>
+                                <option value="164">Camille</option>
+                                <option value="69">Cassiopeia</option>
+                                <option value="31">Chogath</option>
+                                <option value="42">Corki</option>
+                                <option value="122">Darius</option>
+                                <option value="131">Diana</option>
+                                <option value="119">Draven</option>
+                                <option value="36">DrMundo</option>
+                                <option value="245">Ekko</option>
+                                <option value="60">Elise</option>
+                                <option value="28">Evelynn</option>
+                                <option value="81">Ezreal</option>
+                                <option value="9">Fiddlesticks</option>
+                                <option value="114">Fiora</option>
+                                <option value="105">Fizz</option>
+                                <option value="3">Galio</option>
+                                <option value="41">Gangplank</option>
+                                <option value="86">Garen</option>
+                                <option value="150">Gnar</option>
+                                <option value="79">Gragas</option>
+                                <option value="104">Graves</option>
+                                <option value="120">Hecarim</option>
+                                <option value="74">Heimerdinger</option>
+                                <option value="420">Illaoi</option>
+                                <option value="39">Irelia</option>
+                                <option value="427">Ivern</option>
+                                <option value="40">Janna</option>
+                                <option value="59">JarvanIV</option>
+                                <option value="24">Jax</option>
+                                <option value="126">Jayce</option>
+                                <option value="202">Jhin</option>
+                                <option value="222">Jinx</option>
+                                <option value="145">Kaisa</option>
+                                <option value="429">Kalista</option>
+                                <option value="43">Karma</option>
+                                <option value="30">Karthus</option>
+                                <option value="38">Kassadin</option>
+                                <option value="55">Katarina</option>
+                                <option value="10">Kayle</option>
+                                <option value="141">Kayn</option>
+                                <option value="85">Kennen</option>
+                                <option value="121">Khazix</option>
+                                <option value="203">Kindred</option>
+                                <option value="240">Kled</option>
+                                <option value="96">KogMaw</option>
+                                <option value="7">Leblanc</option>
+                                <option value="64">LeeSin</option>
+                                <option value="89">Leona</option>
+                                <option value="127">Lissandra</option>
+                                <option value="236">Lucian</option>
+                                <option value="117">Lulu</option>
+                                <option value="99">Lux</option>
+                                <option value="54">Malphite</option>
+                                <option value="90">Malzahar</option>
+                                <option value="57">Maokai</option>
+                                <option value="11">Master Yi</option>
+                                <option value="21">Miss Fortune</option>
+                                <option value="82">Mordekaiser</option>
+                                <option value="25">Morgana</option>
+                                <option value="267">Nami</option>
+                                <option value="75">Nasus</option>
+                                <option value="111">Nautilus</option>
+                                <option value="518">Neeko</option>
+                                <option value="76">Nidalee</option>
+                                <option value="56">Nocturne</option>
+                                <option value="20">Nunu</option>
+                                <option value="2">Olaf</option>
+                                <option value="61">Orianna</option>
+                                <option value="516">Ornn</option>
+                                <option value="80">Pantheon</option>
+                                <option value="78">Poppy</option>
+                                <option value="555">Pyke</option>
+                                <option value="246">Qiyana</option>
+                                <option value="133">Quinn</option>
+                                <option value="497">Rakan</option>
+                                <option value="33">Rammus</option>
+                                <option value="421">Rek Sai</option>
+                                <option value="58">Renekton</option>
+                                <option value="107">Rengar</option>
+                                <option value="92">Riven</option>
+                                <option value="68">Rumble</option>
+                                <option value="13">Ryze</option>
+                                <option value="113">Sejuani</option>
+                                <option value="235">Senna</option>
+                                <option value="875">Sett</option>
+                                <option value="35">Shaco</option>
+                                <option value="98">Shen</option>
+                                <option value="102">Shyvana</option>
+                                <option value="27">Singed</option>
+                                <option value="14">Sion</option>
+                                <option value="15">Sivir</option>
+                                <option value="72">Skarner</option>
+                                <option value="37">Sona</option>
+                                <option value="16">Soraka</option>
+                                <option value="50">Swain</option>
+                                <option value="517">Sylas</option>
+                                <option value="134">Syndra</option>
+                                <option value="223">Tahm Kench</option>
+                                <option value="163">Taliyah</option>
+                                <option value="91">Talon</option>
+                                <option value="44">Taric</option>
+                                <option value="17">Teemo</option>
+                                <option value="412">Thresh</option>
+                                <option value="18">Tristana</option>
+                                <option value="48">Trundle</option>
+                                <option value="23">Tryndamere</option>
+                                <option value="4">Twisted Fate</option>
+                                <option value="29">Twitch</option>
+                                <option value="77">Udyr</option>
+                                <option value="6">Urgot</option>
+                                <option value="110">Varus</option>
+                                <option value="67">Vayne</option>
+                                <option value="45">Veigar</option>
+                                <option value="161">Velkoz</option>
+                                <option value="254">Vi</option>
+                                <option value="112">Viktor</option>
+                                <option value="8">Vladimir</option>
+                                <option value="106">Volibear</option>
+                                <option value="19">Warwick</option>
+                                <option value="62">Wukong</option>
+                                <option value="498">Xayah</option>
+                                <option value="101">Xerath</option>
+                                <option value="5">Xin Zhao</option>
+                                <option value="157">Yasuo</option>
+                                <option value="83">Yorick</option>
+                                <option value="350">Yuumi</option>
+                                <option value="154">Zac</option>
+                                <option value="238">Zed</option>
+                                <option value="115">Ziggs</option>
+                                <option value="26">Zilean</option>
+                                <option value="142">Zoe</option>
+                                <option value="143">Zyra</option>
+                            </select>
+                        </div>
+
+                        <div class='filter-role'>
+                            <p>Role:</p>
+                            <select id="role-dropdown" name="role-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="0">Top</option>
+                                <option value="1">Jungle</option>
+                                <option value="2">Mid</option>
+                                <option value="3">Bottom</option>
+                                <option value="4">Support</option>
+                            </select>
+                        </div>
+
+                        <div id='filter-submit'>
+                            SUBMIT
+                        </div>
+
+                        <script>
+                            $('#filter-submit').click(function(){
+                                
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const username = urlParams.get('username');
+                                const region = urlParams.get('region')
+                                
+                                champ = $( "#champion-dropdown" ).val();
+                                cQuery = '';
+                                if (champ !== null) {
+                                    cQuery = '&cid=' + champ;
+                                }
+
+                                role = $( "#role-dropdown" ).val();
+                                rQuery = '';
+                                if (role !== null) {
+                                    rQuery = '&rid=' + role;
+                                }
+
+                                location.href = 'profile?' + 'username=' + username + '&region=' + region + cQuery + rQuery;
+
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+                <div class='matches-container'>
+                {%for i in data['matches']%}
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-{{i['l_match_outcome']}}'>
+                            <p class='outcome-text outcome-text-{{i['l_match_outcome']}}'>{{i['match_outcome']}}</p>
+                            <p class='match-date'>{{ i['match_length'] }} · {{ i['match_date'] }}</p>
+                        </div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-{{i['l_match_outcome']}}'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src={{i['c_url']}} alt="{{i['c_name']}}" title="{{i['c_name']}}">
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src={{i['s_url1']}} alt={{i['s_name1']}} title={{i['s_name1']}}>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src={{i['s_url2']}} alt={{i['s_name2']}} title={{i['s_name2']}}>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>{{i['c_name']}} <span class='level'>{{i['c_level']}}</span></p>
+                                    <p class='kda'>{{i['c_kda']}}</p>
+                                    <p class='cs'>{{i['c_cs']}}</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i1_url']}} alt="{{i['i1_name']}}" title="{{i['i1_name']}}">
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i2_url']}} alt="{{i['i2_name']}}" title="{{i['i2_name']}}">
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i3_url']}} alt="{{i['i3_name']}}" title="{{i['i3_name']}}">
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i4_url']}} alt="{{i['i4_name']}}" title="{{i['i4_name']}}">
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i5_url']}} alt="{{i['i5_name']}}" title="{{i['i5_name']}}">
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src={{i['i6_url']}} alt="{{i['i6_name']}}" title="{{i['i6_name']}}">
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src={{i['t_url']}} alt="{{i['t_name']}}" title="{{i['t_name']}}">
+                                </div>
+
+                                <div class='teammates-container'>
+                                {%for j in i['bteams']%}
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src={{j['url']}} alt={{j['name']}} title={{j['name']}}>
+                                        </div>
+                                        <p class='teammate-name'>{{j['summoner_name']}}</p>
+                                    </div>
+                                {%endfor%}
+                                </div>
+
+                                <div class='opponents-container'>
+                                {%for j in i['rteams']%}
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src={{j['url']}} alt={{j['name']}} title={{j['name']}}>
+                                        </div>
+                                        <p class='opponent-name'>{{j['summoner_name']}}</p>
+                                    </div>
+                                {%endfor%}
+                                </div>
+
+
+                            </div>
+                            <input id='c-button{{i['matchId']}}' class='comparison-button comparison-{{i['l_match_outcome']}}' type='button' value='>'>
+                        </div>
+                        
+                        <script>
+                            document.getElementById("c-button{{i['matchId']}}").onclick = function () {
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const username = urlParams.get('username');
+                                const r1 = urlParams.get('region');
+                                mID = {{i['matchId']}};
+                                location.href = 'compare?' + 'user1=' + username + '&match1=' + mID + '&r1=' + r1;
+                            };
+                        </script>
+
+                    </div>
+                {%endfor%}
+
+                </div>
+                {%endif%}
+            </div>
+
+            {% endif %}
+            </div>
+
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+              $('#loadingscreen').hide();
+            });
+        </script>
+
+    </body>
+</html>

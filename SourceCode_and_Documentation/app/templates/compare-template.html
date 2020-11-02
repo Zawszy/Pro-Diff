@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Compare</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}">
+
+        <!-- Stylesheet for Compare Page -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/compare.css') }}">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Loading Screen -->
+        <div id='loadingscreen'>
+            <div class='loading_dots_container'>
+                <div class='loading_dot dot-one'></div>
+                <div class='loading_dot dot-two'></div>
+                <div class='loading_dot dot-three'></div>
+            </div>
+            <div class='loading-text'>Loading</div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='/'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pro-players?update=false'>PRO PLAYERS</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div id='region-input-button' class='region-input'>
+                        <p class='region-selection'><span>OCE</span></p>
+                    </div>
+                    <div id='region-options' class='the-regions'>
+                        <div id='oce-option' class='region-option'>OCE</div>
+                        <div id='na-option' class='region-option'>NA</div>
+                        <div id='euw-option' class='region-option'>EUW</div>
+                        <div id='eun-option' class='region-option'>EUN</div>
+                        <div id='kr-option' class='region-option'>KR</div>
+                    </div>
+                    <input class='search-input' id='input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' id='search' type='button' value='>'>
+                </div>
+            </div>
+
+            <script>
+
+                var selecting = false;
+                var curr_region =  $('.region-selection').text().toLowerCase();
+    
+                $("#region-input-button").click(function() {
+    
+                    if (selecting == false) {
+    
+                        selecting = true;
+    
+                        $('#region-options').css("display", "flex");
+                        $('#region-options > *').css('display', 'flex');
+                        $('#' +  curr_region + '-option').hide();
+    
+                        $('#region-options').animate({width: '210px'});
+    
+                    } else {
+    
+                        selecting = false;
+    
+                        $('#region-options').animate({width: '0px'}, function() {
+                            $('#region-options').hide();
+                            $('#region-options > *').hide();
+                        });
+                        
+                    }
+    
+                });
+    
+                $(".region-option").click(function() {
+                    
+                    selecting = false;
+                    selected_region = $(this).text();
+                    
+                    $('#region-options').animate({width: '0px'}, function() {
+                        $('#region-options').hide;
+                        $('#region-options > *').hide();
+                    });
+    
+                    curr_region =  selected_region.toLowerCase();
+                    $('.region-selection span').text(selected_region);
+    
+                });
+    
+                $("#search").click(function() {
+                    input = document.getElementById("input").value;
+                    location.href = "profile?username=" + input + '&region=' + curr_region;
+                });
+            </script>
+
+        </div>
+
+        <!-- Player comparison -->
+        <div class='player-container'>
+        
+            <div class='player-container-wrapper'>
+                {% if flags['summ1_exists'] is sameas true %}
+                <!-- Left-side player box -->
+                <div class='player-one'>
+
+                    <div class='player-one-info'>
+                        <div class='player-icon player-one-icon'>
+                            <img class=player-icon-image src={{ player_info[0]['player_one_info']['icon'] }}>
+                        </div>
+                        <div class='player-desc'>
+                            <div class='player-name'>
+                                <p>{{ player_info[0]['player_one_info']['name']}}</p>
+                                <p class='player-region'>{{ player_info[0]['player_one_info']['region'] }}</p>
+                            </div>
+                            <div class='player-role'>Level {{ player_info[0]['player_one_info']['level'] }}</div>
+                        </div>
+                    </div>
+                    {% if flags['match1_exists'] is sameas false and matches[0] is none %}
+                    
+                    {% else %}
+                    <div class='matches-container'>
+                    {% for i in matches[0] %}
+                        <div class='match'>
+                            <div class='match-outcome match-outcome-{{ i['l_match_outcome_one'] }}'>
+                                <p class='outcome-text'>{{ i['match_outcome_one'] }}</p>
+                                <p class='match-date'>{{ i['matchLength'] }} · {{ i['matchDate'] }}</p>
+                            </div>
+
+                            <div class='match-details match-details-{{ i['l_match_outcome_one'] }}'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='{{ i['champ_one_url'] }}' alt='{{ i['champ_one_name'] }}' title='{{ i['champ_one_name'] }}'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ i['champ_one_summ1'] }}' alt='{{ i['champ_one_summ1_name'] }}' title='{{ i['champ_one_summ1_name'] }}'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ i['champ_one_summ2'] }}' alt='{{ i['champ_one_summ2_name'] }}' title='{{ i['champ_one_summ2_name'] }}'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>{{ i['champ_one_name'] }} {{ i['champ_one_level'] }}</p>
+                                    <p class='kda'>{{ i['champ_one_kda'] }}</p>
+                                    <p class='cs'>{{ i['champ_one_cs'] }}</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i1_icon'] }}' alt='{{ i['p1_i1_icon_name'] }}' title='{{ i['p1_i1_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i2_icon'] }}' alt='{{ i['p1_i2_icon_name'] }}' title='{{ i['p1_i2_icon_name'] }}'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i3_icon'] }}' alt='{{ i['p1_i3_icon_name'] }}' title='{{ i['p1_i3_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i4_icon'] }}' alt='{{ i['p1_i4_icon_name'] }}' title='{{ i['p1_i4_icon_name'] }}'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i5_icon'] }}' alt='{{ i['p1_i5_icon_name'] }}' title='{{ i['p1_i5_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p1_i6_icon'] }}' alt='{{ i['p1_i6_icon_name'] }}' title='{{ i['p1_i6_icon_name'] }}'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='{{ i['p1_t_icon'] }}' alt='{{ i['p1_t_icon_name'] }}' title='{{ i['p1_t_icon_name'] }}'>
+                                </div>
+                                
+                                {% if flags['match1_exists'] is sameas false %}
+                                <input id='r-button{{i['matchId']}}' class='comparison-button comparison-{{i['l_match_outcome_one']}}' type='button' value='>'>
+                                
+                                <script>
+                                    document.getElementById("r-button{{i['matchId']}}").onclick = function () {
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        const user1 = urlParams.get('user1');
+                                        const user2 = urlParams.get('user2');
+                                        const match2 = urlParams.get('match2');
+                                        const r1 = urlParams.get('r1');
+                                        const r2 = urlParams.get('r2');
+                                        
+                                        qr1 = ''
+                                        if (r1 !== null) {
+                                            qr1 = '&r1=' + r1;
+                                        }
+                                        qr2 = ''
+                                        if (r2 !== null) {
+                                            qr2 = '&r2=' + r2;
+                                        }
+                                        quser1 = ''
+                                        if (user1 !== null) {
+                                            quser1 = '&user1=' + user1;
+                                        }
+                                        quser2 = ''
+                                        if (user2 !== null) {
+                                            quser2 = '&user2=' + user2;
+                                        }
+                                        qmatch2 = ''
+                                        if (match2 !== null) {
+                                            qmatch2 = '&match2=' + match2;
+                                        }
+                                        qr2 = ''
+                                        if (r2 !== null) {
+                                            qr2 = '&r2=' + r2;
+                                        }
+                                        match1 = {{i['matchId']}};
+                                        
+                                        if (match2 == null) {
+                                            location.href = 'compare?' + 'match1=' + match1 + quser1 + quser2 + qmatch2 + qr2 + qr1;
+                                        }
+                                        else {
+                                            location.href = 'compare-stats?' + 'match1=' + match1 + quser1 + quser2 + qmatch2 + qr2 + qr1 ;
+                                        }
+                                    };
+                                </script>
+                                    
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class='s-wrapper'>
+                    <div class='s-container'>
+                        <div class='search-bar'>
+                        <div id='region-input-button1' class='region-input'>
+                            <p id='r1' class='region-selection1'><span>OCE</span></p>
+                        </div>
+                        <div id='region-options1' class='the-regions'>
+                            <div id='oce-option1' class='region-option1'>OCE</div>
+                            <div id='na-option1' class='region-option1'>NA</div>
+                            <div id='euw-option1' class='region-option1'>EUW</div>
+                            <div id='eun-option1' class='region-option1'>EUN</div>
+                            <div id='kr-option1' class='region-option1'>KR</div>
+                        </div>
+                            <input class='search-input' id='input-p1' type='text' placeholder='Summoner Name'>
+                            <input class='search-button' id='search-p1' type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <script>
+
+                        var selecting1 = false;
+                        var curr_region1 =  $('#r1').text().toLowerCase();
+
+                        $("#region-input-button1").click(function() {
+
+                            if (selecting == false) {
+
+                                selecting = true;
+
+                                $('#region-options1').css("display", "flex");
+                                $('#region-options1 > *').css('display', 'flex');
+                                $('#' +  curr_region1 + '-option1').hide();
+
+                                $('#region-options1').animate({width: '210px'});
+
+                            } else {
+
+                                selecting = false;
+
+                                $('#region-options1').animate({width: '0px'}, function() {
+                                    $('#region-options1').hide();
+                                    $('#region-options1 > *').hide();
+                                });
+                                
+                            }
+
+                        });
+
+                        $(".region-option1").click(function() {
+                            
+                            selecting1 = false;
+                            selected_region1 = $(this).text();
+                            
+                            $('#region-options1').animate({width: '0px'}, function() {
+                                $('#region-options1').hide;
+                                $('#region-options1 > *').hide();
+                            });
+
+                            curr_region1 =  selected_region1.toLowerCase();
+                            $('.region-selection1 span').text(selected_region1);
+
+                        });
+
+                        $("#search-p1").click(function() {
+
+                            input = document.getElementById("input-p1").value;
+                            
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const user2 = urlParams.get('user2');
+                            const match2 = urlParams.get('match2');
+                            const r2 = urlParams.get('r2');
+                            
+                            qr2 = ''
+                            if (r2 !== null) {
+                                qr2 = '&r2=' + r2;
+                            }
+                            quser2 = ''
+                            if (user2 !== null) {
+                                quser2 = '&user2=' + user2;
+                            }
+                            qmatch2 = ''
+                            if (match2 !== null) {
+                                qmatch2 = '&match2=' + match2;
+                            }
+                            
+                            location.href = 'compare' + '?user1=' + input + '&r1=' + curr_region1 + quser2 + qmatch2 + qr2;
+
+                        });
+                    </script>
+                    
+                </div>
+                {% endif %}
+
+                <!-- Right-side player box -->
+                {% if flags['summ2_exists'] %}
+                <div class='player-two'>
+
+                    <div class='player-two-info'>
+                        <div class='player-icon player-two-icon'>
+                            <img class='player-icon-image' src={{ player_info[1]['player_two_info']['icon'] }}>
+                        </div>
+                        <div class='player-desc'>
+                            <div class='player-name'>
+                                <p class='player-region'>{{ player_info[1]['player_two_info']['region'] }}</p>
+                                <p>{{ player_info[1]['player_two_info']['name'] }}</p>
+                            </div>
+                            <div class='player-role'>Level {{ player_info[1]['player_two_info']['level'] }}</div>
+                        </div>
+                    </div>
+                    {% if flags['match2_exists'] is sameas false and matches[1] is none %}
+                    
+                    {% else %} 
+                    <div class='matches-container'>
+                    {% for i in matches[1] %}
+                        <div class='match'>
+                            <div id='invisible-match-id'>{{i['matchId']}}</div>
+                            <div class='match-outcome match-outcome-{{ i['l_match_outcome_two'] }}'>
+                                <p class='outcome-text'>{{ i['match_outcome_two'] }}</p>
+                                <p class='match-date'>{{ i['matchLength'] }} · {{ i['matchDate'] }}</p>
+                            </div>
+
+                            <div class='match-details match-details-{{ i['l_match_outcome_two'] }}'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='{{ i['champ_two_url'] }}' alt='{{ i['champ_two_name'] }}' title='{{ i['champ_two_name'] }}'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ i['champ_two_summ1'] }}' alt='{{ i['champ_two_summ1_name'] }}' title='{{ i['champ_two_summ1_name'] }}'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ i['champ_two_summ2'] }}' alt='{{ i['champ_two_summ2_name'] }}' title='{{ i['champ_two_summ2_name'] }}'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>{{ i['champ_two_name'] }} {{ i['champ_two_level'] }}</p>
+                                    <p class='kda'>{{ i['champ_two_kda'] }}</p>
+                                    <p class='cs'>{{ i['champ_two_cs'] }}</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i1_icon'] }}' alt='{{ i['p2_i1_icon_name'] }}' title='{{ i['p2_i1_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i2_icon'] }}' alt='{{ i['p2_i2_icon_name'] }}' title='{{ i['p2_i2_icon_name'] }}'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i3_icon'] }}' alt='{{ i['p2_i3_icon_name'] }}' title='{{ i['p2_i3_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i4_icon'] }}' alt='{{ i['p2_i4_icon_name'] }}' title='{{ i['p2_i4_icon_name'] }}'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i5_icon'] }}' alt='{{ i['p2_i5_icon_name'] }}' title='{{ i['p2_i5_icon_name'] }}'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='{{ i['p2_i6_icon'] }}' alt='{{ i['p2_i6_icon_name'] }}' title='{{ i['p2_i6_icon_name'] }}'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='{{ i['p2_t_icon'] }}' alt='{{ i['p2_t_icon_name'] }}' title='{{ i['p2_t_icon_name'] }}'>
+                                </div>
+
+                                {% if flags['match2_exists'] is sameas false %}
+                                <input id='l-button{{i['matchId']}}' class='comparison-button comparison-{{i['l_match_outcome_two']}}' type='button' value='>'>
+                                
+                                <script>
+                                    document.getElementById("l-button{{i['matchId']}}").onclick = function () {
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        const user1 = urlParams.get('user1');
+                                        const user2 = urlParams.get('user2');
+                                        const match1 = urlParams.get('match1');
+                                        const r1 = urlParams.get('r1');
+                                        const r2 = urlParams.get('r2');
+                                        
+                                        qr1 = ''
+                                        if (r1 !== null) {
+                                            qr1 = '&r1=' + r1;
+                                        }
+                                        qr2 = ''
+                                        if (r2 !== null) {
+                                            qr2 = '&r2=' + r2;
+                                        }
+                                        quser1 = ''
+                                        if (user1 !== null) {
+                                            quser1 = '&user1=' + user1;
+                                        }
+                                        quser2 = ''
+                                        if (user2 !== null) {
+                                            quser2 = '&user2=' + user2;
+                                        }
+                                        qmatch1 = ''
+                                        if (match1 !== null) {
+                                            qmatch1 = '&match1=' + match1;
+                                        }
+                                        match2 = {{i['matchId']}};
+                                        
+                                        if (match1 == null) {
+                                            location.href = 'compare?' + 'match2=' + match2 + quser1 + quser2 + qmatch1 + qr2 + qr1;
+                                        }
+                                        else {
+                                            location.href = 'compare-stats?' + 'match2=' + match2 + quser1 + quser2 + qmatch1 + qr2 + qr1;
+                                        }
+                                    };
+                                </script>
+                                    
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class='s-wrapper'>
+
+                    <div class='s-container'>
+                        <div class='search-bar'>
+                        <div id='region-input-button2' class='region-input'>
+                            <p id='r2' class='region-selection2'><span>OCE</span></p>
+                        </div>
+                        <div id='region-options2' class='the-regions'>
+                            <div id='oce-option2' class='region-option2'>OCE</div>
+                            <div id='na-option2' class='region-option2'>NA</div>
+                            <div id='euw-option2' class='region-option2'>EUW</div>
+                            <div id='eun-option2' class='region-option2'>EUN</div>
+                            <div id='kr-option2' class='region-option2'>KR</div>
+                        </div>
+                            <input class='search-input' id='input-p2' type='text' placeholder='Summoner Name'>
+                            <input class='search-button' id='search-p2' type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <script>
+
+                        var selecting2 = false;
+                        var curr_region2 =  $('#r2').text().toLowerCase();
+
+                        $("#region-input-button2").click(function() {
+
+                            if (selecting == false) {
+
+                                selecting = true;
+
+                                $('#region-options2').css("display", "flex");
+                                $('#region-options2 > *').css('display', 'flex');
+                                $('#' +  curr_region2 + '-option2').hide();
+
+                                $('#region-options2').animate({width: '210px'});
+
+                            } else {
+
+                                selecting = false;
+
+                                $('#region-options2').animate({width: '0px'}, function() {
+                                    $('#region-options2').hide();
+                                    $('#region-options2 > *').hide();
+                                });
+                                
+                            }
+
+                        });
+
+                        $(".region-option2").click(function() {
+                            
+                            selecting2 = false;
+                            selected_region2 = $(this).text();
+                            
+                            $('#region-options2').animate({width: '0px'}, function() {
+                                $('#region-options2').hide;
+                                $('#region-options2 > *').hide();
+                            });
+
+                            curr_region2 =  selected_region2.toLowerCase();
+                            $('.region-selection2 span').text(selected_region2);
+
+                        });
+
+                        $("#search-p2").click(function() {
+                            input = document.getElementById("input-p2").value;
+                            
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const user1 = urlParams.get('user1');
+                            const match1 = urlParams.get('match1');
+                            const r1 = urlParams.get('r1');
+                            
+                            quser1 = ''
+                            if (user1 !== null) {
+                                quser1 = '&user1=' + user1;
+                            }
+                            qmatch1 = ''
+                            if (match1 !== null) {
+                                qmatch1 = '&match1=' + match1;
+                            }
+                            qr1 = ''
+                            if (r1 !== null) {
+                                qr1 = '&r1=' + r1;
+                            }
+
+                            location.href = 'compare' + '?user2=' + input + '&r2=' + curr_region2 + quser1 + qmatch1 + qr1;
+
+                        });
+                    </script>
+
+                    <script>
+                        document.getElementById("search-p2").onclick = function () {
+                            
+                        };
+                    </script>
+                    
+                </div>
+                {% endif %}
+
+                </div>
+            </div>
+        </div>
+        
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+              $('#loadingscreen').hide();
+            });
+        </script>
+
+    </body>
+</html>

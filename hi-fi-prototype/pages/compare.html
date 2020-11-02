@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Compare</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel="stylesheet" href="../stylesheets/base.css">
+
+        <!-- Stylesheet for Compare Page -->
+        <link rel="stylesheet" href="../stylesheets/compare.css">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='../index.html'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare.html'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pros.html'>PRO PLAYERS</a></div>
+            <div class='menu-button' id='search-button'><a class='nostyle' href='profile.html'></a>SEARCH</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div class='region-input'>
+                        <p class='region-selection'>OCE</p>
+                    </div>
+                    <input class='search-input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' onclick="location.href='profile.html';" type='button' value='>'>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Player comparison -->
+        <div class='player-container'>
+
+            <div class='player-container-wrapper'>
+
+                <!-- Left-side player box -->
+                <div class='player-one'>
+
+                    <div class='player-one-info'>
+                        <div class='player-icon player-one-icon'>
+                            <img class=player-icon-image src='../images/Planty.png' alt='Plant Icon' title='Plant Icon'>
+                        </div>
+                        <div class='player-desc'>
+                            <div class='player-name'>
+                                <p>TestUser</p>
+                                <p class='player-region'>OCE</p>
+                            </div>
+                            <div class='player-role'>Role</div>
+                        </div>
+                    </div>
+                    
+                    <div class='matches-container'>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Ezreal (17)</p>
+                                    <p class='kda'>6/2/3</p>
+                                    <p class='cs'>205 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Muramana.png' alt='Muramana' title='Muramana'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Blade_Of_The_Ruined_King.png' alt='Blade of The Ruined King' title='Blade of The Ruined King'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ionian_Boots_of_Lucidity.png' alt='Ionian Boots of Lucidity' title='Ionian Boots of Lucidity'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Bloodthirster.png' alt='Bloodthirster' title='Bloodthirster'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Mortal_Reminder.png' alt='Mortal Reminder' title='Mortal Reminder'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Farsight_Alteration.png' alt='Farsight Alteration' title='Farsight Alteration'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                        <div class='match'>
+                            <div class='match-outcome match-outcome-loss'>
+                                <p class='outcome-text'>LOSS</p>
+                            </div>
+
+                            <div class='match-details match-details-loss'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Zac.png' alt='Zac' title='Zac'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Smite.png' alt='Smite' title='Smite'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Zac <span>(18)</span></p>
+                                    <p class='kda'>2/9/8</p>
+                                    <p class='cs'>104 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Cinderhulk.png' alt='Cinderhulk' title='Cinderhulk'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Spirit_Visage.png' alt='Spirit Visage' title='Spirit Visage'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Dead_Man_Plate.png' alt='Dead Man Plate' title='Dead Man Plate'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-loss' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+                        </div>
+                        <div class='match'>
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Syndra.png' alt='Syndra' title='Syndra'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Syndra (16)</p>
+                                    <p class='kda'>10/5/4</p>
+                                    <p class='cs'>279 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Luden_Echo.png' alt='Luden Echo' title='Luden Echo'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Morellonomicon.png' alt='Morellonomicon' title='Morellonomicon'>
+
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Void_Staff.png' alt='Void Staff' title='Void Staff'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Banshee_Veil.png' alt='Banshee Veil' title='Banshee Veil'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+                        </div>
+                        <div class='match'>
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Shen.png' alt='Shen' title='Shen'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Shen (17)</p>
+                                    <p class='kda'>4/3/18</p>
+                                    <p class='cs'>208 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Titanic_Hydra.png' alt='Titanic Hydra' title='Titanic Hydra'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sterak_Gage.png' alt='Sterak Gage' title='Sterak Gage'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+                        </div>
+                        <div class='match'>
+                            <div class='match-outcome match-outcome-loss'>
+                                <p class='outcome-text'>LOSS</p>
+                            </div>
+
+                            <div class='match-details match-details-loss'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Brand.png' alt='Brand' title='Brand'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Brand (14)</p>
+                                    <p class='kda'>10/9/2</p>
+                                    <p class='cs'>22 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Shard_of_True_Ice.png' alt='Shard of True Ice' title='Shard of True Ice'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Morellonomicon.png' alt='Morellonomicon' title='Morellonomicon'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rylai_Crystal_Scepter.png' alt='Rylai Crystal Scepter' title='Rylai Crystal Scepter'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Liandry_Torment.png' alt='Liandry Torment' title='Liandry Torment'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-loss' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right-side player box -->
+                <div class='player-two'>
+
+                    <div class='player-two-info'>
+                        <div class='player-icon player-two-icon'>
+                            <img class='player-icon-image' src='../images/Heartseeker_Vi.png' alt='Heartseeker Vi' title='Heartseeker Vi'>
+                        </div>
+                        <div class='player-desc'>
+                            <div class='player-name'>
+                                <p class='player-region'>NA</p>
+                                <p>TestPro</p>
+                            </div>
+                            <div class='player-role'>Role</div>
+                        </div>
+                    </div>
+
+                    <div class='matches-container'>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Tristana.png' alt='Tristana' title='Tristana'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Heal.png' alt='Heal' title='Heal'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Tristana (18)</p>
+                                    <p class='kda'>12/2/6</p>
+                                    <p class='cs'>325 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Blade_Of_The_Ruined_King.png' alt='Blade of The Ruined King' title='Blade of The Ruined King'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Berserker_Greaves.png' alt='Berserker Greaves' title='Berserker Greaves'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Statikk_Shiv.png' alt='Statikk Shiv' title='Statikk Shiv'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Infinity_Edge.png' alt='Infinity Edge' title='Infinity Edge'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Bloodthirster.png' alt='Bloodthirster' title='Bloodthirster'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Mortal_Reminder.png' alt='Mortal Reminder' title='Mortal Reminder'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Farsight_Alteration.png' alt='Farsight Alteration' title='Farsight Alteration'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Amumu.png' alt='Amumu' title='Amumu'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Smite.png' alt='Smite' title='Smite'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Amumu (17)</p>
+                                    <p class='kda'>2/1/17</p>
+                                    <p class='cs'>182 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Cinderhulk.png' alt='Cinderhulk' title='Cinderhulk'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Dead_Man_Plate.png' alt='Dead Man Plate' title='Dead Man Plate'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Spirit_Visage.png' alt='Spirit Visage' title='Spirit Visage'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Orianna.png' alt='Orianna' title='Orianna'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Orianna (16)</p>
+                                    <p class='kda'>9/0/2</p>
+                                    <p class='cs'>298 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Luden_Echo.png' alt='Luden Echo' title='Luden Echo'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Liandry_Torment.png' alt='Liandry Torment' title='Liandry Torment'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rylai_Crystal_Scepter.png' alt='Rylai Crystal Scepter' title='Rylai Crystal Scepter'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Void_Staff.png' alt='Void Staff' title='Void Staff'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Maokai.png' alt='Maokai' title='Maokai'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Maokai (18)</p>
+                                    <p class='kda'>4/1/15</p>
+                                    <p class='cs'>270 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sunfire_Cape.png' alt='Sunfire Cape' title='Sunfire Cape'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Spirit_Visage.png' alt='Spirit Visage' title='Spirit Visage'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Dead_Man_Plate.png' alt='Dead Man Plate' title='Dead Man Plate'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                        <div class='match'>
+
+                            <div class='match-outcome match-outcome-win'>
+                                <p class='outcome-text'>WIN</p>
+                            </div>
+
+                            <div class='match-details match-details-win'>
+
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='../images/Yuumi.png' alt='Yuumi' title='Yuumi'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Heal.png' alt='Heal' title='Heal'>
+                                    </div>
+
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                    </div>
+
+                                </div>
+
+                                <div class='kda-container'>
+                                    <p class='champion-name'>Yuumi (16)</p>
+                                    <p class='kda'>0/0/23</p>
+                                    <p class='cs'>2 CS</p>
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Shard_of_True_Ice.png' alt='Shard of True Ice' title='Shard of True Ice'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Luden_Echo.png' alt='Luden Echo' title='Luden Echo'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Void_Staff.png' alt='Void Staff' title='Void Staff'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Morellonomicon.png' alt='Morellonomicon' title='Morellonomicon'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <input class='comparison-button comparison-win' onclick="location.href='compare-stats.html';"  type='button' value='>'>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

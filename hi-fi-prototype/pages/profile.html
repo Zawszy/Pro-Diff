@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - TestUser Stats</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel="stylesheet" href="../stylesheets/base.css">
+
+        <!-- Stylesheet for Profile Page -->
+        <link rel="stylesheet" href="../stylesheets/profile.css">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='../index.html'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare.html'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pros.html'>PRO PLAYERS</a></div>
+            <div class='menu-button' id='search-button'><a class='nostyle' href='profile.html'></a>SEARCH</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div class='region-input'>
+                        <p class='region-selection'>OCE</p>
+                    </div>
+                    <input class='search-input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' onclick="location.href='profile.html';" type='button' value='>'>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Profile Page -->
+        <div class='profile-container'>
+        
+            <div class='profile-player-container'>
+
+                <div class='profile-img-container'>
+                    <img class='profile-img' src='../images/Planty.png' alt='Plant Icon' title='Plant Icon'>
+                </div>
+
+                <div class='profile-details'>
+                    <div class='profile-player-name'>
+                        <p class='player-name'>TestUser</p>
+                        <p class='player-region'>OCE</p>
+                    </div>
+    
+                    <div class='profile-player-rank'>
+                        Diamond IV
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='profile-data-container'>
+
+                <div class='filtration-system'>
+                    <div class='filter-button'>FILTER</div>
+                    <div class='filter-menu'>
+                        <div class='filter-champion'>
+                            <p>Champion:</p>
+                            <select class="champion-dropdown" name="champion-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="champion-1">Champion 1</option>
+                                <option value="champion-2">Champion 2</option>
+                                <option value="champion-3">Champion 3</option>
+                                <option value="champion-4">Champion 4</option>
+                                <option value="champion-5">Champion 5</option>
+                            </select>
+                        </div>
+
+                        <div class='filter-role'>
+                            <p>Role:</p>
+                            <select class="role-dropdown" name="role-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="top">Top</option>
+                                <option value="jg">Jungle</option>
+                                <option value="mid">Mid</option>
+                                <option value="bot">Bottom</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='matches-container'>
+
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-win'><p class='outcome-text outcome-text-win'>WIN</p></div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-win'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Ezreal <span class='level'>(17)</span></p>
+                                    <p class='kda'>6/2/3</p>
+                                    <p class='cs'>205 CS</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Muramana.png' alt='Muramana' title='Muramana'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Blade_Of_The_Ruined_King.png' alt='Blade of The Ruined King' title='Blade of The Ruined King'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ionian_Boots_of_Lucidity.png' alt='Ionian Boots of Lucidity' title='Ionian Boots of Lucidity'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Bloodthirster.png' alt='Bloodthirster' title='Bloodthirster'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Mortal_Reminder.png' alt='Mortal Reminder' title='Mortal Reminder'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Farsight_Alteration.png' alt='Farsight Alteration' title='Farsight Alteration'>
+                                </div>
+
+                                <div class='teammates-container'>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Darius.png' alt='Darius' title='Darius'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 1</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Lee_Sin.png' alt='Lee Sin' title='Lee Sin'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 2</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Zoe.png' alt='Zoe' title='Zoe'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 3</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                                        </div>
+                                        <p class='teammate-name'>TestUser</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Yuumi.png' alt='Yuumi' title='Yuumi'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 4</p>
+                                    </div>
+                                </div>
+
+                                <div class='opponents-container'>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Garen.png' alt='Garen' title='Garen'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 1</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Olaf.png' alt='Olaf' title='Olaf'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 2</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Syndra.png' alt='Syndra' title='Syndra'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 3</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Aphelios.png' alt='Aphelios' title='Aphelios'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 4</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Braum.png' alt='Braum' title='Braum'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 5</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <input class='comparison-button comparison-win' onclick="location.href='compare.html';" type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-loss'><p class='outcome-text outcome-text-loss'>LOSS</p></div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-loss'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src='../images/Zac.png' alt='Zac' title='Zac'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Smite.png' alt='Smite' title='Smite'>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Zac <span class='level'>(18)</span></p>
+                                    <p class='kda'>2/9/8</p>
+                                    <p class='cs'>104 CS</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Cinderhulk.png' alt='Cinderhulk' title='Cinderhulk'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Spirit_Visage.png' alt='Spirit Visage' title='Spirit Visage'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Dead_Man_Plate.png' alt='Dead Man Plate' title='Dead Man Plate'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <div class='teammates-container'>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Camille.png' alt='Camille' title='Camille'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 1</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Zac.png' alt='Zac' title='Zac'>
+                                        </div>
+                                        <p class='teammate-name'>TestUser</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Orianna.png' alt='Orianna' title='Orianna'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 2</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Miss_Fortune.png' alt='Miss Fortune' title='Miss Fortune'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 3</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Thresh.png' alt='Thresh' title='Thresh'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 4</p>
+                                    </div>
+                                </div>
+
+                                <div class='opponents-container'>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Aatrox.png' alt='Aatrox' title='Aatrox'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 1</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Trundle.png' alt='Trundle' title='Trundle'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 2</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Annie.png' alt='Annie' title='Annie'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 3</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Kalista.png' alt='Kalista' title='Kalista'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 4</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Tahm_Kench.png' alt='Tahm Kench' title='Tahm Kench'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 5</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <input class='comparison-button comparison-loss' onclick="location.href='compare.html';" type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-win'><p class='outcome-text outcome-text-win'>WIN</p></div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-win'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src='../images/Syndra.png' alt='Syndra' title='Syndra'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Syndra <span class='level'>(16)</span></p>
+                                    <p class='kda'>10/5/4</p>
+                                    <p class='cs'>279 CS</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Luden_Echo.png' alt='Luden Echo' title='Luden Echo'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Morellonomicon.png' alt='Morellonomicon' title='Morellonomicon'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Void_Staff.png' alt='Void Staff' title='Void Staff'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Banshee_Veil.png' alt='Banshee Veil' title='Banshee Veil'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <div class='teammates-container'>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Garen.png' alt='Garen' title='Garen'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 1</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Skarner.png' alt='Skarner' title='Skarner'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 2</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Syndra.png' alt='Syndra' title='Syndra'>
+                                        </div>
+                                        <p class='teammate-name'>TestUser</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Senna.png' alt='Senna' title='Senna'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 3</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Janna.png' alt='Janna' title='Janna'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 4</p>
+                                    </div>
+                                </div>
+
+                                <div class='opponents-container'>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Ryze.png' alt='Ryze' title='Ryze'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 1</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Amumu.png' alt='Amumu' title='Amumu'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 2</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Yasuo.png' alt='Yasuo' title='Yasuo'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 3</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Caitlyn.png' alt='Caitlyn' title='Caitlyn'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 4</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Morgana.png' alt='Morgana' title='Morgana'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 5</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <input class='comparison-button comparison-win' onclick="location.href='compare.html';" type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-win'><p class='outcome-text outcome-text-win'>WIN</p></div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-win'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src='../images/Shen.png' alt='Shen' title='Shen'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Teleport.png' alt='Teleport' title='Teleport'>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Shen <span class='level'>(17)</span></p>
+                                    <p class='kda'>4/3/18</p>
+                                    <p class='cs'>208 CS</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Trinity_Force.png' alt='Trinity Force' title='Trinity Force'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Titanic_Hydra.png' alt='Titanic Hydra' title='Titanic Hydra'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Ninja_Tabi.png' alt='Ninja Tabi' title='Ninja Tabi'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sterak_Gage.png' alt='Sterak Gage' title='Sterak Gage'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Warmog_Armour.png' alt='Warmog Armour' title='Warmog Armour'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Abyssal_Mask.png' alt='Abyssal Mask' title='Abyssal Mask'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <div class='teammates-container'>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Shen.png' alt='Shen' title='Shen'>
+                                        </div>
+                                        <p class='teammate-name'>TestUser</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Sejuani.png' alt='Sejuani' title='Sejuani'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 1</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Qiyana.png' alt='Qiyana' title='Qiyana'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 2</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Jinx.png' alt='Jinx' title='Jinx'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 3</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Soraka.png' alt='Soraka' title='Soraka'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 4</p>
+                                    </div>
+                                </div>
+
+                                <div class='opponents-container'>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Ornn.png' alt='Ornn' title='Ornn'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 1</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Lee_Sin.png' alt='Lee Sin' title='Lee Sin'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 2</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Zoe.png' alt='Zoe' title='Zoe'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 3</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Kaisa.png' alt='Kaisa' title='Kaisa'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 4</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Sona.png' alt='Sona' title='Sona'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 5</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <input class='comparison-button comparison-win' onclick="location.href='compare.html';" type='button' value='>'>
+                        </div>
+                    </div>
+
+                    <div class='match'>
+                        <div class='match-outcome match-outcome-loss'><p class='outcome-text outcome-text-loss'>LOSS</p></div>
+                        <div class='match-detail-wrapper'>
+                            <div class='match-details match-loss'>
+
+                                <div class='champion-img-container'>
+                                     <img class='champion-img' src='../images/Brand.png' alt='Brand' title='Brand'>
+                                </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Ignite.png' alt='Ignite' title='Ignite'>
+                                   </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='../images/Flash.png' alt='Flash' title='Flash'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>Brand <span class='level'>(14)</span></p>
+                                    <p class='kda'>10/9/2</p>
+                                    <p class='cs'>22 CS</p>
+
+                                </div>
+
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Shard_of_True_Ice.png' alt='Shard of True Ice' title='Shard of True Ice'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Morellonomicon.png' alt='Morellonomicon' title='Morellonomicon'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rylai_Crystal_Scepter.png' alt='Rylai Crystal Scepter' title='Rylai Crystal Scepter'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Liandry_Torment.png' alt='Liandry Torment' title='Liandry Torment'>
+                                    </div>    
+                                </div>
+                                <div class='item-duo'>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Sorcerer_Shoes.png' alt='Sorcerer Shoes' title='Sorcerer Shoes'>
+                                    </div>
+                                    <div class='item-img-container'>
+                                        <img class='item-img' src='../images/Rabadon_Deathcap.png' alt='Rabadon Deathcap' title='Rabadon Deathcap'>
+                                    </div>    
+                                </div>
+
+                                <div class='trinket-img-container'>
+                                    <img class='trinket-img' src='../images/Warding_Totem.png' alt='Warding Totem' title='Warding Totem'>
+                                </div>
+
+                                <div class='teammates-container'>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Aatrox.png' alt='Aatrox' title='Aatrox'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 1</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Gragas.png' alt='Gragas' title='Gragas'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 2</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Zed.png' alt='Zed' title='Zed'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 3</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Aphelios.png' alt='Aphelios' title='Aphelios'>
+                                        </div>
+                                        <p class='teammate-name'>Team-mate 4</p>
+                                    </div>
+                                    <div class='teammate'>
+                                        <div class='teammate-img-container'>
+                                            <img class='teammate-img' src='../images/Brand.png' alt='Brand' title='Brand'>
+                                        </div>
+                                        <p class='teammate-name'>TestUser</p>
+                                    </div>
+                                </div>
+
+                                <div class='opponents-container'>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Maokai.png' alt='Maokai' title='Maokai'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 1</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Graves.png' alt='Graves' title='Graves'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 2</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Lissandra.png' alt='Lissandra' title='Lissandra'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 3</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Ezreal.png' alt='Ezreal' title='Ezreal'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 4</p>
+                                    </div>
+                                    <div class='opponent'>
+                                        <div class='opponent-img-container'>
+                                            <img class='opponent-img' src='../images/Zilean.png' alt='Zilean' title='Zilean'>
+                                        </div>
+                                        <p class='opponent-name'>Opponent 5</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <input class='comparison-button comparison-loss' onclick="location.href='compare.html';" type='button' value='>'>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

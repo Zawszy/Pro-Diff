@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Template</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel="stylesheet" href="../stylesheets/base.css">
+        <!-- Pro Team Stylesheet-->
+        <link rel="stylesheet" href="../stylesheets/pros.css">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='../index.html'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare.html'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pros.html'>PRO PLAYERS</a></div>
+            <div class='menu-button' id='search-button'><a class='nostyle' href='profile.html'></a>SEARCH</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div class='region-input'>
+                        <p class='region-selection'>OCE</p>
+                    </div>
+                    <input class='search-input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' onclick="location.href='profile.html';" type='button' value='>'>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Area--> 
+
+        <div class='main-container'>
+
+            <div class='playermon-container'>
+
+                <div class='playermon-title'>PLAYER OF THE MONTH</div>
+
+                <div class='playermon-pic-wrapper'>
+                    <img class='playermon-pic' src='../images/Faker.png' alt='Faker' title='Faker'>
+                </div> 
+
+                <div class='playermon-desc'>
+                    <div class='playermon-details'>
+                        <p class='player-name'>Lee "Faker" Sang-hyeok</p>
+                        <p class='player-region'>KOREA</p>
+                    </div>
+    
+                    <div class='playermon-info'>
+                        <span id='playermon-team'>T1</span> · <span id='playermon-role'>Mid Laner</span>
+                    </div>
+
+                    <div class='playermon-champion'>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='../images/Annie.png' alt='Annie' title='Annie'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='../images/Lissandra.png' alt='Lissandra' title='Lissandra'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='../images/Orianna.png' alt='Orianna' title='Orianna'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='../images/Syndra.png' alt='Syndra' title='Syndra'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='../images/Ryze.png' alt='Ryze' title='Ryze'>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class='regions-container'>
+
+                <div class='filtration-system'>
+                    <div class='filter-button'>FILTER</div>
+                    <div class='filter-menu'>
+                        <div class='filter-champion'>
+                            <p>Region:</p>
+                            <select class="pro-region-dropdown" name="pro-region-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="region-1">North America</option>
+                                <option value="region-2">Europe</option>
+                                <option value="region-3">Oceania</option>
+                                <option value="region-4">Korea</option>
+                            </select>
+                        </div>
+
+                        <div class='filter-role'>
+                            <p>Role:</p>
+                            <select class="role-dropdown" name="role-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="top">Top</option>
+                                <option value="jg">Jungle</option>
+                                <option value="mid">Mid</option>
+                                <option value="bot">Bottom</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+
+                    </div>
+                
+                </div>
+
+                <div class='region'>
+                    <div class='region-title'>NORTH AMERICA</div>
+                    
+                    <div class='teams-wrapper'>
+
+                        <div class='team selected'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Cloud-9.png' alt='Cloud 9' title='Cloud 9'></div>
+                            <div class='team-name selected-name'>Cloud 9</div>    
+                            <div class='team-selector'></div>
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Fly-quest.png' alt='Flyquest' title='Flyquest'></div>
+                            <div class='team-name'>Flyquest</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/T-L.png' alt='Team Liquid' title='Team Liquid'></div>
+                            <div class='team-name'>Team Liquid</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/T-SM.png' alt='Team Solo Mid' title='Team Solo Mid'></div>
+                            <div class='team-name'>Team Solo Mid</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/immortals.png' alt='Immortals' title='Immortals'></div>
+                            <div class='team-name'>Immortals</div>    
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+                
+
+                <div class='full-team-wrapper'>
+                    
+
+                    <div class='full-team'>
+
+
+                        <div class='full-team-title'>Cloud 9</div>
+                        
+                        <div class='players-wrapper'>
+
+                            <div class='player'>
+                                <div class='player-pic-wrapper'><img class='player-pic' src='../images/Licorice.png' alt='Licorice' title='Licorice'></div>
+                                <div class='player-name'>Licorice</div>
+                                <div class='player-role'>Top Lane</div>    
+                            </div>
+
+                            <div class='player'>
+                                <div class='player-pic-wrapper'><img class='player-pic' src='../images/Blaber.png' alt='Blaber' title='Blaber'></div>
+                                <div class='player-name'>Blaber</div>
+                                <div class='player-role'>Jungler</div>    
+                            </div>
+
+                            <div class='player'>
+                                <div class='player-pic-wrapper'><img class='player-pic' src='../images/Nisqy.png' alt='Nisqy' title='Nisqy'></div>
+                                <div class='player-name'>Nisqy</div>
+                                <div class='player-role'>Middle Lane</div>    
+                            </div>
+
+                            <div class='player'>
+                                <div class='player-pic-wrapper'><img class='player-pic' src='../images/Zven.png' alt='Zven' title='Zven'></div>
+                                <div class='player-name'>Zven</div>
+                                <div class='player-role'>Bot Lane</div>    
+                            </div>
+
+                            <div class='player'>
+                                <div class='player-pic-wrapper'><img class='player-pic' src='../images/Vulcan.png' alt='Vulcan' title='Vulcan'></div>
+                                <div class='player-name'>Vulcan</div>
+                                <div class='player-role'>Support</div>    
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class='region'>
+                    <div class='region-title'>EUROPE</div>
+                    
+                    <div class='teams-wrapper'>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/G2.png' alt='G2' title='G2'></div>
+                            <div class='team-name'>G2</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Origen.png' alt='Origen' title='Origen'></div>
+                            <div class='team-name'>Origen</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Fnatic.png' alt='Fnatic' title='Fnatic'></div>
+                            <div class='team-name'>Fnatic</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Rogue.png' alt='Rogue' title='Rogue'></div>
+                            <div class='team-name'>Rogue</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Misfits.png' alt='Misfits' title='Misfits'></div>
+                            <div class='team-name'>Misfits</div>    
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+
+                <div class='region'>
+                    <div class='region-title'>OCEANIA</div>
+                    
+                    <div class='teams-wrapper'>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/The-Chiefs.png' alt='The Chiefs' title='The Chiefs'></div>
+                            <div class='team-name'>The Chiefs</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Legacy.png' alt='Legacy Esports' title='Legacy Esports'></div>
+                            <div class='team-name'>Legacy</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Dire-Wolves.png' alt='Dire Wolves' title='Dire Wolves'></div>
+                            <div class='team-name'>Dire Wolves</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Order.png' alt='Order' title='Order'></div>
+                            <div class='team-name'>Order</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Gravitas.png' alt='Gravitas' title='Gravitas'></div>
+                            <div class='team-name'>Gravitas</div>    
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+
+                <div class='region'>
+                    <div class='region-title'>KOREA</div>
+                    
+                    <div class='teams-wrapper'>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/GenG.png' alt='Gen.G' title='Gen.G'></div>
+                            <div class='team-name'>Gen.G</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/T1.png' alt='T1' title='T1'></div>
+                            <div class='team-name'>T1</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/DRX.png' alt='DragonX' title='DragonX'></div>
+                            <div class='team-name'>DragonX</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/AF.png' alt='Afreeca Freecs' title='Afreeca Freecs'></div>
+                            <div class='team-name'>Afreeca Freecs</div>    
+                        </div>
+
+                        <div class='team'>
+                            <div class='team-pic-wrapper'><img class='team-pic' src='../images/Damwon.png' alt='Damwon Gaming' title='Damwon Gaming'></div>
+                            <div class='team-name'>Damwon Gaming</div>    
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        
+    </body>
+</html>

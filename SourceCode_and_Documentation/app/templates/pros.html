@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Pro Players</title>
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}">
+        
+        <!-- Stylesheet for Pros -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pros.css') }}">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Loading Screen -->
+        <div id='loadingscreen'>
+            <div class='loading_dots_container'>
+                <div class='loading_dot dot-one'></div>
+                <div class='loading_dot dot-two'></div>
+                <div class='loading_dot dot-three'></div>
+            </div>
+            <div class='loading-text'>Loading</div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='/'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pro-players?update=false'>PRO PLAYERS</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div id='region-input-button' class='region-input'>
+                        <p class='region-selection'><span>OCE</span></p>
+                    </div>
+                    <div id='region-options' class='the-regions'>
+                        <div id='oce-option' class='region-option'>OCE</div>
+                        <div id='na-option' class='region-option'>NA</div>
+                        <div id='euw-option' class='region-option'>EUW</div>
+                        <div id='eun-option' class='region-option'>EUN</div>
+                        <div id='kr-option' class='region-option'>KR</div>
+                    </div>
+                    <input class='search-input' id='input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' id='search' type='button' value='>'>
+                </div>
+            </div>
+
+            <script>
+
+                var selecting = false;
+                var curr_region =  $('.region-selection').text().toLowerCase();
+    
+                $("#region-input-button").click(function() {
+    
+                    if (selecting == false) {
+    
+                        selecting = true;
+    
+                        $('#region-options').css("display", "flex");
+                        $('#region-options > *').css('display', 'flex');
+                        $('#' +  curr_region + '-option').hide();
+    
+                        $('#region-options').animate({width: '210px'});
+    
+                    } else {
+    
+                        selecting = false;
+    
+                        $('#region-options').animate({width: '0px'}, function() {
+                            $('#region-options').hide();
+                            $('#region-options > *').hide();
+                        });
+                        
+                    }
+    
+                });
+    
+                $(".region-option").click(function() {
+                    
+                    selecting = false;
+                    selected_region = $(this).text();
+                    
+                    $('#region-options').animate({width: '0px'}, function() {
+                        $('#region-options').hide;
+                        $('#region-options > *').hide();
+                    });
+    
+                    curr_region =  selected_region.toLowerCase();
+                    $('.region-selection span').text(selected_region);
+    
+                });
+    
+                $("#search").click(function() {
+                    input = document.getElementById("input").value;
+                    location.href = "profile?username=" + input + '&region=' + curr_region;
+                });
+            </script>
+
+        </div>
+
+        <!-- Main Area--> 
+
+        <div class='main-container'>
+
+            <div class='playermon-container'>
+
+                <div class='playermon-title'>PLAYER OF THE MONTH</div>
+
+                <div id='playermonth' class='playermon-pic-wrapper'>
+                    <img class='playermon-pic' src='{{ url_for('static',filename='/temp_images/') }}Faker.png' alt='Faker' title='Faker'>
+                </div>
+
+                <script>
+                    document.getElementById("playermonth").onclick = function () {
+                        location.href = "profile?username=hide on bush&region=kr";
+                    };
+                </script>
+
+                <div class='playermon-desc'>
+                    <div class='playermon-details'>
+                        <p class='player-name'>Lee "Faker" Sang-hyeok</p>
+                        <p class='player-region'>KOREA</p>
+                    </div>
+    
+                    <div class='playermon-info'>
+                        <span id='playermon-team'>T1</span> · <span id='playermon-role'>Mid Laner</span>
+                    </div>
+
+                    <div class='playermon-champion'>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='{{ url_for('static',filename='/temp_images/') }}Annie.png' alt='Annie' title='Annie'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='{{ url_for('static',filename='/temp_images/') }}Lissandra.png' alt='Lissandra' title='Lissandra'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='{{ url_for('static',filename='/temp_images/') }}Orianna.png' alt='Orianna' title='Orianna'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='{{ url_for('static',filename='/temp_images/') }}Syndra.png'' alt='Syndra' title='Syndra'>
+                        </div>
+                        <div class='fav-champ-wrapper'>
+                            <img class='fav-champ-img' src='{{ url_for('static',filename='/temp_images/') }}Ryze.png'' alt='Ryze' title='Ryze'>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class='regions-container'>
+
+                <div class='filtration-system'>
+                    <div class='filter-button'>FILTER</div>
+                    <div class='filter-menu'>
+                        <div class='filter-champion'>
+                            <p>Region:</p>
+                            <select id="pro-region-dropdown" name="pro-region-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="NORTH AMERICA">North America</option>
+                                <option value="EUROPE">Europe</option>
+                                <option value="OCEANIA">Oceania</option>
+                                <option value="KOREA">Korea</option>
+                            </select>
+                        </div>
+
+                        <div class='filter-role'>
+                            <p>Role:</p>
+                            <select id="role-dropdown" name="role-select">
+                                <option value="null" selected disabled hidden>----------</option>
+                                <option value="top">Top</option>
+                                <option value="jg">Jungle</option>
+                                <option value="mid">Mid</option>
+                                <option value="bot">Bottom</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+
+                        <div id='filter-submit'>
+                            SUBMIT
+                        </div>
+
+                    </div>
+                    <script>
+                        $('#filter-submit').click(function(){
+
+                            pregion = $( "#pro-region-dropdown" ).val();
+                            reQuery = '';
+                            if (pregion !== null) {
+                                reQuery = '&reid=' + pregion;
+                            }
+
+                            role = $( "#role-dropdown" ).val();
+                            rQuery = '';
+                            if (role !== null) {
+                                rQuery = '&rid=' + role;
+                            }
+
+                            location.href = 'pro-players?update=false' + reQuery + rQuery;
+
+                        });
+                    </script>
+                </div>
+
+                {% for region in data['result'] %}
+                <div class='region'>
+                    <div class='region-title'>{{region.region}}</div>
+                    
+                    <div class='teams-wrapper'>
+
+                        {% for team in region.teams %}
+                        <div class='team'>
+                            <div id='{{team.id}}'class='team-pic-wrapper'><img class='team-pic' src='{{ team.img_name }}' alt='{{team.name}}' title='{{team.name}}'></div>
+                            <div class='team-name'>{{team.name}}</div>    
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                    
+                    {% for team in region.teams %}
+                    <div id='{{team.id}}-wrapper' class='full-team-wrapper'>
+                    
+
+                        <div class='full-team'>
+    
+    
+                            <div class='full-team-title'>{{team.name}}</div>
+                            
+                            <div class='players-wrapper'>
+                                {% for player in team.players %}
+                                <div class='player'>
+                                    <div class='player-pic-wrapper' {% if player.soloqid != '-1' %} style='background-color: #74d7be;'{% endif %}>
+                                        <img class='player-pic' src='../static/{{player.img_url}}'>
+                                        <span class='p-region' style='display: none;'>{{player.region}}</span>
+                                        <span class='p-user' style='display: none;'>{{player.soloqid}}</span>
+                                    </div>
+                                    <div class='player-name'>{{player.name}}</div>
+                                    <div class='player-role'>{{player.role}}</div>    
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                {% endfor %}
+
+                <div class='update'>Last updated on {{ data['lastUpdated'] }}</br><span id='update-records' style='text-decoration: underline; cursor: pointer'>Update again?</span></div>
+
+                <script>
+                    $('#update-records').click(function (e){
+                        
+                        if (confirm("Are you sure you want to update the records?\nThis operation can take a few minutes.")) {
+                            location.href = "pro-players?update=true";
+                        }
+
+                    })           
+                </script>
+
+                <script>
+                    $('.player-pic-wrapper').click(function (e){
+                        
+                        p_user = $(this).find('.p-user').text();
+                        p_region = $(this).find('.p-region').text();
+
+                        if (p_user !== '-1') {
+                            location.href = "profile?username=" + p_user + '&region=' + p_region;
+                        }
+
+                    })           
+                </script>
+
+                <script>
+                    $('.team-pic-wrapper').click(function(e){
+
+                        wrapID = "#" + event.currentTarget.id + '-wrapper';
+                        $('.full-team-wrapper').hide();
+                        $('.team-pic-wrapper').css("background-color", "white")
+                        $(wrapID).css("display", "flex");
+                        $("#" + event.currentTarget.id).css("background-color", "#a5e5d5")
+                        
+                        target = document.getElementById(event.currentTarget.id + '-wrapper');
+                        targetpos = target.getBoundingClientRect().top;
+
+                        $('html, body').animate({scrollTop: $(target).offset().top - 160 });
+                    });
+                </script>
+
+            </div>
+
+        </div>
+
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn’t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+                $('#loadingscreen').hide();
+                const urlParams = new URLSearchParams(window.location.search);
+                const udate = urlParams.get('update');
+
+                if (udate == 'true') {
+                    location.href = "pro-players?update=false";
+                }
+            });
+            $(window).on('unload', function() {
+                $('#loadingscreen').show();
+            });
+        </script>
+        
+    </body>
+</html>

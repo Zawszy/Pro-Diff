@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>ProDiff - Compare</title> <!-- CHANGE THIS AND DELETE COMMENT -->
+
+        <!-- Basic Stylesheet for All Pages -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/base.css') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/compare-stats.css') }}">
+
+        <!-- SEN Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
+        <!-- Righteous Font from Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    </head>
+    <body>
+
+        <!-- Loading Screen -->
+        <div id='loadingscreen'>
+            <div class='loading_dots_container'>
+                <div class='loading_dot dot-one'></div>
+                <div class='loading_dot dot-two'></div>
+                <div class='loading_dot dot-three'></div>
+            </div>
+            <div class='loading-text'>Loading</div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class='top-bar'>
+
+            <div class='menu-button' id='logo-text'><a class='nostyle' href='/'>ProDiff</a></div>
+            <div class='menu-button' id='compare-button'><a class='nostyle' href='compare'>COMPARE</a></div>
+            <div class='menu-button' id='pro-button'><a class='nostyle' href='pro-players?update=false'>PRO PLAYERS</a></div>
+
+            <div class='search-container'>
+                <div class='search-bar'>
+                    <div id='region-input-button' class='region-input'>
+                        <p class='region-selection'><span>OCE</span></p>
+                    </div>
+                    <div id='region-options' class='the-regions'>
+                        <div id='oce-option' class='region-option'>OCE</div>
+                        <div id='na-option' class='region-option'>NA</div>
+                        <div id='euw-option' class='region-option'>EUW</div>
+                        <div id='eun-option' class='region-option'>EUN</div>
+                        <div id='kr-option' class='region-option'>KR</div>
+                    </div>
+                    <input class='search-input' id='input' type='text' placeholder='Summoner Name'>
+                    <input class='search-button' id='search' type='button' value='>'>
+                </div>
+            </div>
+
+            <script>
+
+                var selecting = false;
+                var curr_region =  $('.region-selection').text().toLowerCase();
+    
+                $("#region-input-button").click(function() {
+    
+                    if (selecting == false) {
+    
+                        selecting = true;
+    
+                        $('#region-options').css("display", "flex");
+                        $('#region-options > *').css('display', 'flex');
+                        $('#' +  curr_region + '-option').hide();
+    
+                        $('#region-options').animate({width: '210px'});
+    
+                    } else {
+    
+                        selecting = false;
+    
+                        $('#region-options').animate({width: '0px'}, function() {
+                            $('#region-options').hide();
+                            $('#region-options > *').hide();
+                        });
+                        
+                    }
+    
+                });
+    
+                $(".region-option").click(function() {
+                    
+                    selecting = false;
+                    selected_region = $(this).text();
+                    
+                    $('#region-options').animate({width: '0px'}, function() {
+                        $('#region-options').hide;
+                        $('#region-options > *').hide();
+                    });
+    
+                    curr_region =  selected_region.toLowerCase();
+                    $('.region-selection span').text(selected_region);
+    
+                });
+    
+                $("#search").click(function() {
+                    input = document.getElementById("input").value;
+                    location.href = "profile?username=" + input + '&region=' + curr_region;
+                });
+            </script>
+
+        </div>
+
+        <div class='compare-container'>
+
+            <div class='compare-container-wrapper'>
+
+                <div class='players'>
+
+                    <div class='player-one'>
+
+                        <div class='player-one-info'>
+
+                            <div class='player-icon player-one-icon'>
+                                <img class=player-icon-image src='{{ data['player_one_match']['player_one_icon'] }}' alt='Plant Icon' title='Plant Icon'>
+                            </div>
+
+                            <div class='player-desc'>
+
+                                <div class='player-name'>
+                                    <p>{{ data['player_one_match']['player_one_name'] }}</p>
+                                    <p class='player-region'>{{ data['player_one_match']['player_one_region'] }}</p>
+                                </div>
+                                <div class='player-rank'>{{ data['player_one_match']['player_one_rank'] }}</div>
+
+                            </div>
+
+                        </div>
+
+                        <div class='outcome-container'>
+                            <div class='match-outcome match-outcome-{{ data['player_one_match']['l_match_outcome_one'] }}'>
+                                <p class='outcome-text outcome-text-{{ data['player_one_match']['l_match_outcome_one'] }}'>{{ data['player_one_match']['match_outcome_one'] }}</p>
+                                <p class='match-date'>{{ data['player_one_match']['match_one_length'] }} · {{ data['player_one_match']['match_one_date'] }}</p>
+                            </div>
+                            <div class='match-details match-details-{{ data['player_one_match']['l_match_outcome_one'] }} match-details-p1'>
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='{{ data['player_one_match']['champ_one_url'] }}' alt='{{ data['player_one_match']['champ_one_name'] }}' title='{{ data['player_one_match']['champ_one_name'] }}'>
+                               </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ data['player_one_match']['champ_one_summ1'] }}' alt='{{ data['player_one_match']['champ_one_summ1_name'] }}' title='{{ data['player_one_match']['champ_one_summ1_name'] }}'>
+                                    </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ data['player_one_match']['champ_one_summ2'] }}' alt='{{ data['player_one_match']['champ_one_summ2_name'] }}' title='{{ data['player_one_match']['champ_one_summ2_name'] }}'>
+                                    </div>
+                                </div>
+                                
+                                <div class='summoner-spells-container'>
+                                    <div class='rune-img-container'>
+                                        <img class='ss-img' src='{{ data['player_one_match']['player_one_primary_rune'] }}' alt='{{ data['player_one_match']['player_one_primary_rune_name'] }}' title='{{ data['player_one_match']['player_one_primary_rune_name'] }}'>
+                                    </div>
+                                    <div class='rune-img-container'>
+                                        <img class='ss-img' src='{{ data['player_one_match']['player_one_secondary_rune'] }}' alt='{{ data['player_one_match']['player_one_secondary_rune_name'] }}' title='{{ data['player_one_match']['player_one_secondary_rune_name'] }}'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>{{ data['player_one_match']['champ_one_name'] }} {{ data['player_one_match']['champ_one_level'] }}</span></p>
+                                    <p class='kda'>{{ data['player_one_match']['champ_one_kda'] }}</p>
+                                    {% if data['player_one_match']['champ_one_kda_decimal'] == -2 %}
+                                    <p class='kda-decimal'>Perfect KDA</p>
+                                    {% else %}
+                                    <p class='kda-decimal' {% if data['player_one_match']['champ_one_kda_decimal'] < 1 %} title="Your ratio of kills and assists to deaths is less than 1:1. Dying causes the enemy team to gain a gold advantage. Try to avoid dying as much." style="background-color: #9a2c2c; padding: 0px 5px; border-radius: 5px;" {% endif %}>{{ data['player_one_match']['champ_one_kda_decimal']}}:1 KDA</p>
+                                    {% endif %}
+
+                                </div>
+
+                                <div class='cs-container'>
+
+                                    <p class='cs'>{{ data['player_one_match']['champ_one_cs'] }}</p>
+                                    <p class='cs-pm'>{{ data['player_one_match']['champ_one_cs_min'] }} CS/min</p>
+                                    <p class='cs' {% if data['player_one_match']['champ_one_cs_fifteen'] < 100 %} title="Your CS at 15:00 is lower than it should be. Try to focus more on slaying minions." style="background-color: #9a2c2c; padding: 0px 5px; border-radius: 5px;" {% endif %}>{{ data['player_one_match']['champ_one_cs_fifteen'] }} CS@15</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class='skillorder-container'>
+                            <div class='so-header'>
+                                <p class='header-text'>SKILL ORDER</p>
+                            </div>
+                            <div class='so-details'>
+                                <div class='skill-matrix'>
+                                    {%for i in data['player_one_match']['skills']%}
+                                    <div class='skill-item skill-name'>{{ i[0] }}</div>
+                                        {%for j in i[1]%}
+                                            {%if j is none%}
+                                                <div class='skill-item'></div>
+                                            {%else%}
+                                                <div class='skill-item skill-chosen'>{{j}}</div>
+                                            {%endif%}
+                                        {%endfor%}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itembox-container'>
+                            <div class='item-header'>
+                                <p class='header-text'>ITEMS</p>
+                            </div>
+                            <div class='item-details'>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i1_icon'] }}' alt='{{ data['player_one_match']['p1_i1_icon_name'] }}' title='{{ data['player_one_match']['p1_i1_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i2_icon'] }}' alt='{{ data['player_one_match']['p1_i2_icon_name'] }}' title='{{ data['player_one_match']['p1_i2_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i3_icon'] }}' alt='{{ data['player_one_match']['p1_i3_icon_name'] }}' title='{{ data['player_one_match']['p1_i3_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i4_icon'] }}' alt='{{ data['player_one_match']['p1_i4_icon_name'] }}' title='{{ data['player_one_match']['p1_i4_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i5_icon'] }}' alt='{{ data['player_one_match']['p1_i5_icon_name'] }}' title='{{ data['player_one_match']['p1_i5_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_i6_icon'] }}' alt='{{ data['player_one_match']['p1_i6_icon_name'] }}' title='{{ data['player_one_match']['p1_i6_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_one_match']['p1_t_icon'] }}' alt='{{ data['player_one_match']['p1_t_icon_name'] }}' title='{{ data['player_one_match']['p1_t_icon_name'] }}'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itemorder-container'>
+                            <div class='itemorder-header'>
+                                <p class='header-text'>ITEM ORDER</p>
+                            </div>
+                            <div id='p1-io' class='itemorder-details'>
+                                {% for i in data['player_one_match']['item_order_one'] %}
+                                <div class='itemtime-pair'>
+                                    <div class='items-container'>
+                                        {% for j in i[1] %}
+                                        <div class='itemorder-img-container'>
+                                            <img class='item-img' src='{{ j['id'] }}' alt='{{ j['name'] }}' title='{{ j['name'] }}'>
+                                        </div>
+                                        {% endfor %} 
+                                    </div>
+                                    <div class='timestamp'>{{ i[0] }}:00</div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        <div class='team-container'>
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM OBJECTIVES</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>{{ data['player_one_match']['t1_barons'] }} Baron Kills</p>
+                                    <p class='to-info'>{{ data['player_one_match']['t1_dragons'] }} Dragon Kills</p>
+                                    <p class='to-info'>{{ data['player_one_match']['t1_towers'] }} Towers Destroyed</p>
+                                </div>
+                            </div>
+
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM STATS</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>{{ data['player_one_match']['t1kills'] }} Total Kills</p>
+                                    <p class='to-info'>{{ data['player_one_match']['t1gold'] }} Total Gold</p>
+                                    <p class='to-info'>{{ data['player_one_match']['t1cs'] }} Total CS</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class='graph-container'>    
+                            <div class="container">
+                                <div class='got-header'>
+                                    <p class='header-text got-text'>KILL PARTICIPATION</p>
+                                </div>
+                                <div class = 'kp-container'>
+                                    <canvas id="playerPart1">
+                                    </canvas>
+                                </div>
+                            </div> 
+                            <script>
+                                var myChart2 = document.getElementById('playerPart1').getContext('2d');            
+                                var p1_kills = '{{ data['player_one_match']['champ_one_kills'] }}';
+                                var team_kills = '{{ data['player_one_match']['t1kills'] }}';
+                                var p1_assists = '{{ data['player_one_match']['champ_one_assists'] }}';
+                                var p1 = '{{ data['player_one_match']['player_one_name'] }}';
+
+                                var myChart2 = new Chart(document.getElementById("playerPart1"), {
+                                    type: 'pie',
+                                    data: {
+                                    labels: [p1, "Team"],
+                                    datasets: [{
+                                        label: "Kill Participation",
+                                        backgroundColor: ["#a5e5d5", "#115942"],
+                                        data: [parseInt(p1_kills) + parseInt(p1_assists), parseInt(team_kills) - parseInt(p1_kills) - parseInt(p1_assists)]
+                                    }]
+                                    }
+                                });            
+                            </script>                                          
+                        </div>
+
+
+                    </div>
+
+                    <div class='player-two'>
+
+                        <div class='player-two-info'>
+
+                            <div class='player-icon player-one-icon'>
+                                <img class=player-icon-image src='{{ data['player_two_match']['player_two_icon'] }}' alt='Plant Icon' title='Plant Icon'>
+                            </div>
+
+                            <div class='player-desc'>
+
+                                <div class='player-name'>
+                                    <p>{{ data['player_two_match']['player_two_name'] }}</p>
+                                    <p class='player-region'>{{ data['player_two_match']['player_two_region'] }}</p>
+                                </div>
+                                <div class='player-rank'>{{ data['player_two_match']['player_two_rank'] }}</div>
+
+                            </div>
+
+                        </div>
+
+                        <div class='outcome-container'>
+                            <div class='match-outcome match-outcome-{{ data['player_two_match']['l_match_outcome_two'] }}'>
+                                <p class='outcome-text outcome-text-{{ data['player_two_match']['l_match_outcome_two'] }}'>{{ data['player_two_match']['match_outcome_two'] }}</p>
+                                <p class='match-date'>{{ data['player_two_match']['match_two_length'] }} · {{ data['player_two_match']['match_two_date'] }}</p>
+                            </div>
+                            <div class='match-details match-details-{{ data['player_two_match']['l_match_outcome_two'] }} match-details-p1'>
+                                <div class='champion-img-container'>
+                                    <img class='champion-img' src='{{ data['player_two_match']['champ_two_url'] }}' alt='{{ data['player_two_match']['champ_two_name'] }}' title='{{ data['player_two_match']['champ_two_name'] }}'>
+                               </div>
+
+                                <div class='summoner-spells-container'>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ data['player_two_match']['champ_two_summ1'] }}' alt='{{ data['player_two_match']['champ_two_summ1_name'] }}' title='{{ data['player_two_match']['champ_two_summ1_name'] }}'>
+                                    </div>
+                                    <div class='ss-img-container'>
+                                        <img class='ss-img' src='{{ data['player_two_match']['champ_two_summ2'] }}' alt='{{ data['player_two_match']['champ_two_summ2_name'] }}' title='{{ data['player_two_match']['champ_two_summ2_name'] }}'>
+                                    </div>
+                                </div>
+                                
+                                <div class='summoner-spells-container'>
+                                    <div class='rune-img-container'>
+                                        <img class='ss-img' src='{{ data['player_two_match']['player_two_primary_rune'] }}' alt='{{ data['player_two_match']['player_two_primary_rune_name'] }}' title='{{ data['player_two_match']['player_two_primary_rune_name'] }}'>
+                                    </div>
+                                    <div class='rune-img-container'>
+                                        <img class='ss-img' src='{{ data['player_two_match']['player_two_secondary_rune'] }}' alt='{{ data['player_two_match']['player_two_secondary_rune_name'] }}' title='{{ data['player_two_match']['player_two_secondary_rune_name'] }}'>
+                                    </div>
+                                </div>
+
+                                <div class='kda-container'>
+
+                                    <p class='champion-name'>{{ data['player_two_match']['champ_two_name'] }} {{ data['player_two_match']['champ_two_level'] }}</span></p>
+                                    <p class='kda'>{{ data['player_two_match']['champ_two_kda'] }}</p>
+                                    {% if data['player_two_match']['champ_two_kda_decimal'] == -2 %}
+                                    <p class='kda-decimal'>Perfect KDA</p>
+                                    {% else %}
+                                    <p class='kda-decimal' {% if data['player_two_match']['champ_two_kda_decimal'] < 1 %} title="Your ratio of kills and assists to deaths is less than 1:1. Dying causes the enemy team to gain a gold advantage. Try to avoid dying as much." style="background-color: #9a2c2c; padding: 0px 5px; border-radius: 5px;" {% endif %}>{{ data['player_two_match']['champ_two_kda_decimal']}}:1 KDA</p>
+                                    {% endif %}
+
+                                </div>
+
+                                <div class='cs-container'>
+
+                                    <p class='cs'>{{ data['player_two_match']['champ_two_cs'] }}</p>
+                                    <p class='cs-pm'>{{ data['player_two_match']['champ_two_cs_min'] }} CS/min</p>
+                                    <p class='cs' {% if data['player_two_match']['champ_two_cs_fifteen'] < 100 %} title="Your CS at 15:00 is lower than it should be. Try to focus more on slaying minions." style="background-color: #9a2c2c; padding: 0px 5px; border-radius: 5px;" {% endif %}>{{ data['player_two_match']['champ_two_cs_fifteen'] }} CS@15</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class='skillorder-container'>
+                            <div class='so-header'>
+                                <p class='header-text'>SKILL ORDER</p>
+                            </div>
+                            <div class='so-details'>
+                                <div class='skill-matrix'>
+                                    {%for i in data['player_two_match']['skills']%}
+                                    <div class='skill-item skill-name'>{{ i[0] }}</div>
+                                        {%for j in i[1]%}
+                                            {%if j is none%}
+                                                <div class='skill-item'></div>
+                                            {%else%}
+                                                <div class='skill-item skill-chosen'>{{j}}</div>
+                                            {%endif%}
+                                        {%endfor%}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itembox-container'>
+                            <div class='item-header'>
+                                <p class='header-text'>ITEMS</p>
+                            </div>
+                            <div class='item-details'>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i1_icon'] }}' alt='{{ data['player_two_match']['p2_i1_icon_name'] }}' title='{{ data['player_two_match']['p2_i1_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i2_icon'] }}' alt='{{ data['player_two_match']['p2_i2_icon_name'] }}' title='{{ data['player_two_match']['p2_i2icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i3_icon'] }}' alt='{{ data['player_two_match']['p2_i3_icon_name'] }}' title='{{ data['player_two_match']['p2_i3_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i4_icon'] }}' alt='{{ data['player_two_match']['p2_i4_icon_name'] }}' title='{{ data['player_two_match']['p2_i4_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i5_icon'] }}' alt='{{ data['player_two_match']['p2_i5_icon_name'] }}' title='{{ data['player_two_match']['p2_i5_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_i6_icon'] }}' alt='{{ data['player_two_match']['p2_i6_icon_name'] }}' title='{{ data['player_two_match']['p2_i6_icon_name'] }}'>
+                                </div>
+                                <div class='item-img-container'>
+                                    <img class='item-img' src='{{ data['player_two_match']['p2_t_icon'] }}' alt='{{ data['player_two_match']['p2_t_icon_name'] }}' title='{{ data['player_two_match']['p2_t_icon_name'] }}'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='itemorder-container'>
+                                <div class='itemorder-header'>
+                                    <p class='header-text'>ITEM ORDER</p>
+                                </div>
+                                <div id='p2-io' class='itemorder-details'>
+                                    {% for i in data['player_two_match']['item_order_two'] %}
+                                    <div class='itemtime-pair'>
+                                        <div class='items-container'>
+                                            {% for j in i[1] %}
+                                            <div class='itemorder-img-container'>
+                                                <img class='item-img' src='{{ j['id'] }}' alt='{{ j['name'] }}' title='{{ j['name'] }}'>
+                                            </div>
+                                            {% endfor %}     
+                                        </div>
+                                        <div class='timestamp'>{{ i[0] }}:00</div>
+                                    </div>
+                                    {% endfor %}
+    
+                                </div>
+                        </div>
+
+
+                        <div class='team-container'>
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM OBJECTIVES</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>{{ data['player_two_match']['t2_barons'] }} Baron Kills</p>
+                                    <p class='to-info'>{{ data['player_two_match']['t2_dragons'] }} Dragon Kills</p>
+                                    <p class='to-info'>{{ data['player_two_match']['t2_towers'] }} Towers Destroyed</p>
+                                </div>
+                            </div>
+
+                            <div class='teamobj-container'>
+                                <div class='to-header'>
+                                    <p class='header-text team-text'>TEAM STATS</p>
+                                </div>
+                                <div class='to-details'>
+                                    <p class='to-info'>{{ data['player_two_match']['t2kills'] }} Total Kills</p>
+                                    <p class='to-info'>{{ data['player_two_match']['t2gold'] }} Total Gold</p>
+                                    <p class='to-info'>{{ data['player_two_match']['t2cs'] }} Total CS</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class='graph-container'>
+                            <div class='container'>
+
+                                <div class='got-header'>
+                                    <p class='header-text got-text'>KILL PARTICIPATION</p>
+                                </div>
+                                
+                                <div class = 'kp-container'>
+                                    <canvas id="playerPart2">
+                                    </canvas>
+                                </div>
+                            </div>
+                                
+                            <script>
+                                var myChart3 = document.getElementById('playerPart2').getContext('2d');            
+                                var p2_kills = '{{ data['player_two_match']['champ_two_kills'] }}';
+                                var team_kills = '{{ data['player_two_match']['t2kills'] }}';
+                                var p2_assists = '{{ data['player_two_match']['champ_two_assists'] }}';
+                                var p2 = '{{ data['player_two_match']['player_two_name'] }}';
+                                var myChart3 = new Chart(document.getElementById("playerPart2"), {
+                                    type: 'pie',
+                                    data: {
+                                    labels: [p2, "Team"],
+                                    datasets: [{
+                                        label: "Kill Participation",
+                                        backgroundColor: ["#a5e5d5", "#115942"],
+                                        data: [parseInt(p2_kills) + parseInt(p2_assists), parseInt(team_kills) - parseInt(p2_kills) - parseInt(p2_assists)]
+                                    }]
+                                    }
+                                });            
+                            </script>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class='graph-container'>    
+                    <div class="container">
+                        <div class='got-header'>
+                            <p class='header-text got-text'>GOLD OVER TIME</p>
+                        </div>
+                        <canvas id="goldCompare">
+                        </canvas>
+                    </div> 
+                    <script>
+                        var gold1 = document.createElement('gold1');
+                        var gold2 = document.createElement('gold2');
+                        
+                        p1 = '{{ data['player_one_match']['player_one_name'] }}';
+                        p2 = '{{ data['player_two_match']['player_two_name'] }}';
+
+                        gold1.innerHTML = '{{ data['player_one_match']['player_one_gold'] }}';
+                        var goldData1 = String(gold1.innerHTML.replace(/'/g, "\""));
+                        goldData1 = JSON.parse(goldData1);
+
+                        gold2.innerHTML = '{{ data['player_two_match']['player_two_gold'] }}';
+                        var goldData2 = String(gold2.innerHTML.replace(/'/g, "\""));
+                        goldData2 = JSON.parse(goldData2);
+                        
+                        gameLength1 = '{{ data['player_one_match']['match_one_length']}}';
+                        gameLength1 = gameLength1.replace(" MINS", "");                 
+                        
+                        gameLength2 = '{{ data['player_two_match']['match_two_length']}}';
+                        gameLength2 = gameLength2.replace(" MINS", "");  
+                        
+                        player1Id = '{{ data['player_one_match']['player_one_id'] }}';
+                        player2Id = '{{ data['player_two_match']['player_two_id'] }}';
+
+                        var myChart1 = document.getElementById('goldCompare').getContext('2d');
+                        var varX = [];
+                        var varY1 = [];
+                        var varY2 = [];
+                        var i = 0;
+                        var gameLength;
+                        var max;
+                        // Getting x axis
+                        if (gameLength1 < gameLength2) {
+                            gameLength = gameLength2;
+                        } else {
+                            gameLength = gameLength1;
+                        }
+
+                        while (i < gameLength) {
+                            varX.push(i);
+                            i++;
+                        }       
+
+                        // Getting y axis
+                        i = 0;
+                        while (i < gameLength1) {
+                            varY1.push(goldData1.frames[i].participantFrames[player1Id].totalGold);
+                            i++;
+                        }
+                        var a = varY1[i-1];
+
+                        i = 0;
+                        while (i < gameLength2) {
+                            varY2.push(goldData2.frames[i].participantFrames[player2Id].totalGold);
+                            i++;
+                        }
+                        var b = varY2[i-1];
+
+                        max = Math.ceil(a / 1000) * 1000;
+
+                        let goldChart2 = new Chart(myChart1, {
+                            type: 'line',
+                            data: {
+                            labels: varX,
+                            datasets: [{
+                                label: p1,
+                                data: varY1,
+                                backgroundColor: [
+                                    'rgba(30, 73, 153, 0.3)'
+                                ],
+                                borderColor: [
+                                    'rgba(30, 73, 153, 1)'
+                                ]
+                            }, {
+                                label: p2,
+                                data: varY2,
+                                backgroundColor: [
+                                    'rgba(153, 30, 30, 0.3)'
+                                ],
+                                borderColor: [
+                                    'rgba(153, 30, 30, 1)'
+                                ]                              
+                            }]
+                            },  
+                            options: {
+                            tooltips: {
+                                displayColors: false,
+                                mode: 'index'
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        suggestedMax: max
+                                    },
+                                    scaleLabel: {
+                                        display : true,
+                                        labelString : 'Gold'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display : true,
+                                        labelString : 'Time (min)'
+                                    }
+                                }]
+                            }
+                            }  
+                        });
+                    </script>                            
+                </div>         
+                       
+            </div>
+        </div>
+        
+        <div class='bot-bar'>
+            <div class='menu-button' id='logo-text'>
+                <p class='copyright'>© 2020 ProDiff</p>
+                <p class='disclaimer'>
+                    ProDiff is not endorsed by Riot Games and doesn?t reflect the views of Riot Games
+                    or any of the featured streamers and professional players. 
+                    League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+                $('#loadingscreen').hide();
+
+                p1_io_h = $("#p1-io").height();
+                p2_io_h = $("#p2-io").height();
+
+                if (p1_io_h >= p2_io_h) {
+                    $("#p2-io").height(p1_io_h);
+                } else {
+                    $("#p1-io").height(p2_io_h);
+                }
+
+            });
+
+            $(window).resize(function() {
+                
+                $("#p1-io").css("height", "auto");
+                $("#p2-io").css("height", "auto");
+
+                p1_io_h = $("#p1-io").height();
+                p2_io_h = $("#p2-io").height();
+
+                if (p1_io_h >= p2_io_h) {
+                    $("#p2-io").height(p1_io_h);
+                } else {
+                    $("#p1-io").height(p2_io_h);
+                }
+
+            });
+        </script>
+
+    </body>
+</html>
